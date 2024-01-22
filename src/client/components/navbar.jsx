@@ -4,8 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="w-full h-[232px] mx-auto">
-      <div className="max-w-[1440px] mx-auto h-full  flex flex-col ">
-        <div className="h-1/2 flex items-center justify-between gap-x-[33px] max-w-[1280px]">
+      <div className="max-w-[1440px] mx-auto h-full  flex flex-col">
+        <div className="h-1/2 flex items-center justify-between gap-x-[33px] w-[1280px] mx-auto">
           <Link to={"/"}>
             <img src="/images/blacklogo.png" alt="logo" />
           </Link>
@@ -32,8 +32,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="h-[1px] bg-[#000000]/30 px-[78px] max-w-[1280px]"></div>
-        <div className="h-1/2 flex items-center gap-x-[50px] max-w-[1280px]">
+        <div className="h-[1px] bg-[#000000]/30 px-[78px] w-[1280px] mx-auto"></div>
+        <div className="h-1/2 flex items-center gap-x-[50px] w-[1280px] mx-auto">
           <NavLink
             to={"/"}
             className={({ isActive }) =>
