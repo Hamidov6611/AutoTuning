@@ -1,9 +1,9 @@
 import React from 'react'
 
-const videosSection = () => {
+const VideosSection = () => {
   return (
-    <div>videosSection</div>
+    <div>VideosSection</div>
   )
 }
 
-export default videosSection
+export default VideosSection
