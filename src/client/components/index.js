@@ -8,6 +8,7 @@ import ExhaustSystems from "./exhaust-systems";
 import Work from "./work";
 import VideosSection from "./videosSection";
 import Feedback from "./feedback";
+import Footer from "./footer";
 
 
-export { Layout, Navbar, Hero, Collection, ChipTuning, News, ExhaustSystems, Work, VideosSection, Feedback };
+export { Layout, Navbar, Hero, Collection, ChipTuning, News, ExhaustSystems, Work, VideosSection, Feedback, Footer };
