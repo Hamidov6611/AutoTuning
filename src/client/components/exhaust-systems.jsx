@@ -2,9 +2,9 @@ import React from "react";
 
 const ExhaustSystems = () => {
   return (
-    <div className="max-w-[1440px] mx-auto my-10 md:my-20">
-      <div className="max-w-[1280px] mx-auto flex justify-between items-center">
-        <div className="w-1/2 flex flex-col gap-y-3 md:gap-y-6">
+    <div className="st:max-w-[1440px] mx-auto my-10 tl:my-20 relative">
+      <div className="w-full sl:w-[98%] st:max-w-[1280px] mx-auto flex sl:flex-row flex-col grid-flow-col gap-y-6 justify-between items-center">
+        <div className="sl:w-1/2 w-[98%] px-[3%] sl:px-0 flex flex-col gap-y-3 md:gap-y-6">
           <p className="font-montserrat font-medium text-[28px] md:text-[40px] text-mainBlack">
             Выхлопные системы
           </p>
@@ -52,7 +52,7 @@ const ExhaustSystems = () => {
           </ul>
           <p className="text-sm md:text-base font-normal text-mainBlack">Можем изготовить абсолютно на любое транспортное средство</p>
         </div>
-        <div className="w-1/2 md:h-[428px]">
+        <div className="sl:w-1/2 md:h-[428px] pl-[4%] ">
           <img src="/images/system.png" alt="" className="w-full h-full" />
         </div>
       </div>

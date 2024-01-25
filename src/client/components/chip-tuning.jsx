@@ -2,15 +2,15 @@ import React from "react";
 
 const ChipTuning = () => {
   return (
-    <div className="max-w-[1440px] mx-auto flex items-center gap-x-[129px] h-[487px] my-20 md:my-40">
-      <div className="md:w-[50%]">
+    <div className="w-[98%] st:max-w-[1440px] mx-auto flex tl:flex-row flex-col pl-[3%] sl:pl-0 gap-y-6 sl:gap-y-0 items-center gap-x-[129px] h-auto tl:h-[487px] tl:my-20 my-6">
+      <div className="tl:w-[50%]">
         <img
           src="/images/tuning.png"
           alt="tuning image"
           className="w-full h-full"
         />
       </div>
-      <div className="md:w-[50%] flex flex-col gap-y-3 md:gap-y-6">
+      <div className="tl:w-[50%] flex flex-col gap-y-3 md:gap-y-6">
         <p className="font-montserrat text-mainBlack font-medium md:text-[35px] text-[28px] md:text-start text-center">
           ЧИП-ТЮНИНГ
         </p>

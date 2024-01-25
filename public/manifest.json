@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ЧИП-ТЮНИНГ",
+  "name": "Чип-тюнинг - изменения данных зыписанных в электронном блоке управления",
   "icons": [
     {
       "src": "favicon.ico",

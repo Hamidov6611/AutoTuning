@@ -1,15 +1,17 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import GamburgerMenu from "./ui/menu/GamburgerMenu";
 
 const Navbar = () => {
   return (
-    <div className="w-full h-[232px] mx-auto">
-      <div className="max-w-[1440px] mx-auto h-full  flex flex-col">
-        <div className="h-1/2 flex items-center justify-between gap-x-[33px] w-[1280px] mx-auto">
+    <div className="w-full h-[100px] tl:h-[232px] mx-auto">
+      <div className="st:max-w-[1440px] mx-auto h-full  flex flex-col">
+        <div className="h-full px-[3%] tl:pl-0 tl:h-1/2 flex items-center justify-between gap-x-[33px] w-[98%] st:w-[1280px] mx-auto">
           <Link to={"/"}>
-            <img src="/images/blacklogo.png" alt="logo" />
+            <img src="/images/blacklogo.png" alt="logo" className="w-[150px]" />
           </Link>
-          <div className="flex gap-x-[33px]">
+          <GamburgerMenu class1={"tl:hidden"} />
+          <div className="hidden tl:flex gap-x-[33px]">
             <div className="flex gap-x-[10px] items-center">
               <img
                 src="/images/location.png"
@@ -32,8 +34,10 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="h-[1px] bg-[#000000]/30 px-[78px] w-[1280px] mx-auto"></div>
-        <div className="h-1/2 flex items-center gap-x-[50px] w-[1280px] mx-auto">
+        {/* laptop */}
+        <div className="h-[1px] bg-[#000000]/30 hidden tl:flex lg:px-[78px] w-[98%] st:w-[1280px] mx-auto"></div>
+        {/* laptop */}
+        <div className="h-1/2 hidden tl:flex items-center gap-x-[50px]  w-[98%] st:w-[1280px] mx-auto">
           <NavLink
             to={"/"}
             className={({ isActive }) =>

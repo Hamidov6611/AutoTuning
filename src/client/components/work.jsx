@@ -4,11 +4,11 @@ import MyButton from "./ui/button/button";
 
 const Work = () => {
   return (
-    <div className="max-w-[1280px] mx-auto flex flex-col gap-y-6 md:gap-y-10 mb-6 md:mb-20">
+    <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 md:gap-y-10 mb-6 tl:mb-20 px-[3%] sl:px-0">
       <p className="text-[28px] md:text-[40px] text-center text-mainBlack font-medium font-montserrat">
         Примеры работ
       </p>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-x-[20px] gap-y-4">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 tl:grid-cols-3 gap-x-[20px] md:gap-y-6 gap-y-4">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
             <img src={c.img} alt={c.title} className="h-[401px]" />
@@ -25,7 +25,7 @@ const Work = () => {
           </div>
         ))}
       </div>
-      <MyButton title={"Смотреть больше"} class1={`w-[270px] md:w-[305px] mx-auto mt-12`} />
+      <MyButton title={"Смотреть больше"} class1={`w-[270px] md:w-[305px] h-[50px] sl:h-[75px] rounded-[5px] mx-auto mt-12`} />
     </div>
   );
 };

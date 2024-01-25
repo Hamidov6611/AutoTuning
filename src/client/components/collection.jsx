@@ -2,9 +2,9 @@ import React from "react";
 
 const Collection = () => {
   return (
-    <div className="max-w-[1440px] mx-auto my-10">
-      <div className="w-[1280px] mx-auto flex flex-col gap-y-[80px]">
-        <div className="flex justify-between w-full items-end">
+    <div className="max-w-[1440px] mx-auto my-5 ol:my-10 px-[3%] tl:px-0">
+      <div className="w-[98%] st:w-[1280px] mx-auto flex flex-col gap-y-[20px] tl:gap-y-[80px]">
+        <div className="flex overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-0 justify-between w-full items-end">
           {col1?.map((c, idx) => (
             <img
               src={c}
@@ -14,12 +14,12 @@ const Collection = () => {
             />
           ))}
         </div>
-        <div className="flex justify-between w-full items-center">
+        <div className="flex overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-0 justify-between w-full items-center">
           {col2?.map((c, idx) => (
             <img src={c} alt={c} key={idx} className={``} />
           ))}
         </div>
-        <div className="flex gap-x-[35px] items-center w-full">
+        <div className="flex overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-[35px] items-center w-full">
           {col3?.map((c, idx) => (
             <img src={c} alt={c} key={idx} className={``} />
           ))}

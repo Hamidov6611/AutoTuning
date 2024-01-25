@@ -3,11 +3,11 @@ import MyRedButton from "./ui/button/red-button";
 
 const News = () => {
   return (
-    <div className="max-w-[1280px] mx-auto flex flex-col gap-y-6 md:gap-y-16">
+    <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0">
       <p className="w-full text-center font-medium font-montserrat text-[28px] md:text-[40px]">
         Новости
       </p>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-x-6 mb-20">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
         {news?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
             <img src={c.img} alt="" className="md:h-[369px] h-[300px]" />

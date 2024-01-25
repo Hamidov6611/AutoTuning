@@ -13,6 +13,13 @@ module.exports = {
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif']
+      },
+      screens: {
+        'st': '1440px',
+        'nor': '1280px',
+        'ol': '1160px',
+        'tl': '1070px',
+        'sl': '820px'
       }
     },
   },
