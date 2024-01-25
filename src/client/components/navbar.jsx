@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import GamburgerMenu from "./ui/menu/GamburgerMenu";
 
 const Navbar = () => {
+  const [isHover, setIsHover] = useState({
+    menu1: false,
+    menu2: false,
+    menu3: false,
+    menu4: false,
+  });
+  const hoverHandler = (menu) => {
+    setIsHover({ ...isHover, [menu]: true });
+  };
+  const closeHandler = (menu) => {
+    setIsHover({ ...isHover, [menu]: false });
+  };
+  console.log(isHover);
   return (
     <div className="w-full h-[100px] tl:h-[232px] mx-auto">
       <div className="st:max-w-[1440px] mx-auto h-full  flex flex-col">
@@ -49,16 +62,39 @@ const Navbar = () => {
             Главная
           </NavLink>
           <NavLink
-            to={"/chip-tuning"}
-            className={({ isActive }) =>
-              !isActive
-                ? "text-mainBlack flex items-center gap-x-[10px]"
-                : "text-mainRed flex items-center gap-x-[10px]"
+            // to={"/chip-tuning"}
+            onMouseEnter={() => hoverHandler("menu1")}
+            onMouseLeave={() => closeHandler("menu1")}
+            className={
+              ({ isActive }) =>
+                // !isActive
+                "text-mainBlack flex items-center gap-x-[10px] relative"
+              // : "text-mainRed flex items-center gap-x-[10px] relative"
             }
           >
+            {isHover.menu1 && (
+              <div
+                onMouseEnter={() => setIsHover({ ...isHover, menu1: true })}
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[230px]"
+              >
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Каталог
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Описание
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Обучение чип-тюнингу
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Фаил сервис
+                </Link>
+              </div>
+            )}
+
             <p className="text-base font-montserrat font-normal">Чип-тюнинг</p>
             <svg
-              className="hover:rotate-180"
+              className={`${isHover.menu1 && "hover:rotate-180"}`}
               width="15"
               height="8"
               viewBox="0 0 15 8"
@@ -72,13 +108,32 @@ const Navbar = () => {
             </svg>
           </NavLink>
           <NavLink
-            to={"/service"}
-            className={({ isActive }) =>
-              !isActive
-                ? "text-mainBlack flex items-center gap-x-[10px]"
-                : "text-mainRed flex items-center gap-x-[10px]"
+            // to={"/service"}
+            onMouseEnter={() => hoverHandler("menu2")}
+            onMouseLeave={() => closeHandler("menu2")}
+            className={
+              ({ isActive }) =>
+                // !isActive
+                "text-mainBlack flex items-center gap-x-[10px] relative"
+              // : "text-mainRed flex items-center gap-x-[10px]"
             }
           >
+            {isHover.menu2 && (
+              <div
+                onMouseEnter={() => setIsHover({ ...isHover, menu2: true })}
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[280px]"
+              >
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Выхлопные системы
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Отключение катализатора
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Отключение сажевого фильтра
+                </Link>
+              </div>
+            )}
             <p className="text-base font-montserrat font-normal">Сервис</p>
             <svg
               className="hover:rotate-180"
@@ -95,13 +150,35 @@ const Navbar = () => {
             </svg>
           </NavLink>
           <NavLink
-            to={"/market"}
-            className={({ isActive }) =>
-              !isActive
-                ? "text-mainBlack flex items-center gap-x-[10px]"
-                : "text-mainRed flex items-center gap-x-[10px]"
+            // to={"/market"}
+            onMouseEnter={() => hoverHandler("menu3")}
+            onMouseLeave={() => closeHandler("menu3")}
+            className={
+              ({ isActive }) =>
+                // !isActive
+                "text-mainBlack flex items-center gap-x-[10px] relative"
+              // : "text-mainRed flex items-center gap-x-[10px]"
             }
           >
+            {isHover.menu3 && (
+              <div
+                onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
+              >
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Выхлопные системы <br />( даунпайпы и спорт выхлопы )
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Винил
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Спортивные диски
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  Тормозные системы
+                </Link>
+              </div>
+            )}
             <p className="text-base font-montserrat font-normal">
               Магазин тюнинга
             </p>
@@ -130,13 +207,32 @@ const Navbar = () => {
             Акции
           </NavLink>
           <NavLink
-            to={"/blog"}
+            // to={"/blog"}
+            onMouseEnter={() => hoverHandler("menu4")}
+            onMouseLeave={() => closeHandler("menu4")}
             className={({ isActive }) =>
-              !isActive
-                ? "text-mainBlack flex items-center gap-x-[10px]"
-                : "text-mainRed flex items-center gap-x-[10px]"
+              // !isActive
+                 "text-mainBlack flex items-center gap-x-[10px] relative"
+                // : "text-mainRed flex items-center gap-x-[10px]"
             }
           >
+            {isHover.menu4 && (
+              <div
+                onMouseEnter={() => setIsHover({ ...isHover, menu4: true })}
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
+              >
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                Примеры работ
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                Нововсти
+                </Link>
+                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                Статьи
+                </Link>
+                
+              </div>
+            )}
             <p className="text-base font-montserrat font-normal">Блог</p>
             <svg
               className="hover:rotate-180"
