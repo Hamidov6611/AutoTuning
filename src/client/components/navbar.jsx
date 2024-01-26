@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import GamburgerMenu from "./ui/menu/GamburgerMenu";
+import Sidebar from "./sidebar";
+import './ui/menu/menu.css'
 
 const Navbar = () => {
   const [isHover, setIsHover] = useState({
@@ -9,21 +11,24 @@ const Navbar = () => {
     menu3: false,
     menu4: false,
   });
+  const [isMenu, setIsMenu] = useState(false);
   const hoverHandler = (menu) => {
     setIsHover({ ...isHover, [menu]: true });
   };
   const closeHandler = (menu) => {
     setIsHover({ ...isHover, [menu]: false });
   };
+  
+  
   console.log(isHover);
   return (
-    <div className="w-full h-[100px] tl:h-[232px] mx-auto">
+    <div className="w-full h-[100px] tl:h-[232px] mx-auto relative">
       <div className="st:max-w-[1440px] mx-auto h-full  flex flex-col">
         <div className="h-full px-[3%] tl:pl-0 tl:h-1/2 flex items-center justify-between gap-x-[33px] w-[98%] st:w-[1280px] mx-auto">
           <Link to={"/"}>
             <img src="/images/blacklogo.png" alt="logo" className="w-[150px]" />
           </Link>
-          <GamburgerMenu class1={"tl:hidden"} />
+          <GamburgerMenu class1={"tl:hidden"} isMenu={isMenu} setIsMenu={setIsMenu} />
           <div className="hidden tl:flex gap-x-[33px]">
             <div className="flex gap-x-[10px] items-center">
               <img
@@ -77,7 +82,9 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu1: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[230px]"
               >
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link 
+                onClick={() => window.scrollTo({top: 700})}
+                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Каталог
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
@@ -210,10 +217,11 @@ const Navbar = () => {
             // to={"/blog"}
             onMouseEnter={() => hoverHandler("menu4")}
             onMouseLeave={() => closeHandler("menu4")}
-            className={({ isActive }) =>
-              // !isActive
-                 "text-mainBlack flex items-center gap-x-[10px] relative"
-                // : "text-mainRed flex items-center gap-x-[10px]"
+            className={
+              ({ isActive }) =>
+                // !isActive
+                "text-mainBlack flex items-center gap-x-[10px] relative"
+              // : "text-mainRed flex items-center gap-x-[10px]"
             }
           >
             {isHover.menu4 && (
@@ -222,15 +230,14 @@ const Navbar = () => {
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
               >
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                Примеры работ
+                  Примеры работ
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                Нововсти
+                  Новости
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                Статьи
+                  Статьи
                 </Link>
-                
               </div>
             )}
             <p className="text-base font-montserrat font-normal">Блог</p>
@@ -270,6 +277,8 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
+
+      <Sidebar isMenu={isMenu} setIsMenu={setIsMenu} />
     </div>
   );
 };

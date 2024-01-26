@@ -1,7 +1,8 @@
 import React from "react";
 import "./menu.css";
 
-const GamburgerMenu = ({ class1 }) => {
+const GamburgerMenu = ({ class1, setIsMenu, isMenu }) => {
+  
   return (
     <label className={`hamburger ${class1}`}>
       <input type="checkbox" />

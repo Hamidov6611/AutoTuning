@@ -5,6 +5,9 @@
 .hamburger input {
   display: none;
 }
+.sidebar {
+  display: none;
+}
 
 .hamburger svg {
   /* The size of the SVG defines the overall size */
@@ -30,9 +33,15 @@
 
 .hamburger input:checked + svg {
   transform: rotate(-45deg);
+
 }
+
 
 .hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
+}
+
+.hamburger input:checked + svg ~ .sidebar {
+  display: block;
 }

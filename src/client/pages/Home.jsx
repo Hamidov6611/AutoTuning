@@ -1,9 +1,9 @@
 import React from "react";
-import { ChipTuning, Collection, ExhaustSystems, Feedback, Hero, News, VideosSection, Work } from "../components";
+import { ChipTuning, Collection, ExhaustSystems, Feedback, Hero, Layout, News, VideosSection, Work } from "../components";
 
 const Home = () => {
   return (
-    <>
+    <Layout>
       <Hero />
       <Collection />
       <ChipTuning />
@@ -12,7 +12,7 @@ const Home = () => {
       <Work />
       <VideosSection />
       <Feedback />
-    </>
+    </Layout>
   );
 };
 
