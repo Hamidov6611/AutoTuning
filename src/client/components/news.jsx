@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import MyRedButton from "./ui/button/red-button";
-import { instance } from "../../api/axios";
+import { BASE_URL, instance } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const getData = async () => {
     try {
       const { data } = await instance.get(`/news?page=1&limit=3`);
       console.log(data);
-      setData(data)
+      setData(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +28,11 @@ const News = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
-            <img src={`http://localhost:3001/` + c.img} alt="" className="md:h-[369px] h-[300px]" />
+            <img
+              src={BASE_URL + c.img}
+              alt=""
+              className="md:h-[369px] h-[300px]"
+            />
             <div className="h-[145px] space-y-3">
               <p className="text-secondRed font-montserrat font-medium text-[18px] md:text-[20px] w-[80%]">
                 {c.title}
@@ -35,6 +41,10 @@ const News = () => {
             </div>
             <MyRedButton
               title={"Читать дальше"}
+              callback={() => {
+                navigate(`/news/${c?.id}`);
+                window.scrollTo({ top: 0 });
+              }}
               class1={"mr-auto w-[182px] font-montserrat"}
             />
           </div>

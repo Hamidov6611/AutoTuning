@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "./ui/checkbox/checkbox";
 import MyButton from "./ui/button/button";
+import { instance } from "../../api/axios";
+import toast from "react-hot-toast";
 
 const Feedback = () => {
+  const [postData, setPostData] = useState({
+    name: "",
+    phone: "",
+    comment: "",
+  });
+  const postFeedback = async (e) => {
+    e.preventDefault()
+    try {
+      await instance.post(`/feedback`, postData);
+      toast.success("заявка была отложена");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-[98%] st:max-w-[1280px] mx-auto flex md:flex-row flex-col items-start gap-y-6 md:gap-y-10 mb-6 md:mb-20 px-[3%] sl:px-0">
       <div className="w-full sl:w-2/5 tl:w-1/2 flex flex-col gap-y-4 md:gap-y-6">
@@ -67,22 +83,35 @@ const Feedback = () => {
           </p>
         </div>
       </div>
-      <div className="w-full sl:w-3/5 tl:w-1/2 flex flex-col gap-y-[24px]">
+      <form onSubmit={postFeedback} className="w-full sl:w-3/5 tl:w-1/2 flex flex-col gap-y-[24px]">
         <div className="flex md:flex-row flex-col gap-y-[24px] gap-x-4 md:justify-between w-full">
           <input
             type="text"
+            value={postData.name}
+            onChange={(e) => setPostData({ ...postData, name: e.target.value })}
             className="h-[76px] bg-[#F5F5F5] w-full px-[8px] md:px-[16px] placeholder:text-mainBlack placeholder:text-base outline-none"
             placeholder="Ваше имя"
+            required
           />
           <input
             type="text"
+            value={postData.phone}
+            onChange={(e) =>
+              setPostData({ ...postData, phone: e.target.value })
+            }
             className="h-[76px] bg-[#F5F5F5] w-full px-[8px] md:px-[16px] placeholder:text-mainBlack placeholder:text-base outline-none"
             placeholder="Телефон"
+            required
           />
         </div>
         <textarea
-          className="h-[138px] bg-[#F5F5F5] w-full outline-none py-[16px] px-[16px] resize-none placeholder:text-mainBlack placeholder:text-base"
+          value={postData.comment}
+          onChange={(e) =>
+            setPostData({ ...postData, comment: e.target.value })
+          }
+          className="h-[138px] bg-[#F5F5F5] w-full outline-none py-[16px] px-[8px] sm:px-[16px] resize-none placeholder:text-mainBlack placeholder:text-base"
           placeholder="Комментарий"
+          required
         ></textarea>
         <div className="flex items-center gap-x-4">
           <Checkbox />
@@ -91,10 +120,11 @@ const Feedback = () => {
           </p>
         </div>
         <MyButton
+          submit={true}
           title={"Отправить заявку"}
           class1={`mr-auto w-[270px] h-[50px] sl:h-[75px] md:w-[305px]`}
         />
-      </div>
+      </form>
     </div>
   );
 };

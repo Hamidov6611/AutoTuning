@@ -24,3 +24,9 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
+  background-color: #FF0000 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}

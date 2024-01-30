@@ -6,3 +6,4 @@ export const instance = axios.create({
   //     Authorization: `Bearer ` + getTokenFromLocalStorage() || "",
   //   },
 });
+export const BASE_URL = `http://localhost:3001/`;

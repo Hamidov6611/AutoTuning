@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import GamburgerMenu from "./ui/menu/GamburgerMenu";
 import Sidebar from "./sidebar";
-import './ui/menu/menu.css'
+import "./ui/menu/menu.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Close } from "@mui/icons-material";
 
 const Navbar = () => {
   const [isHover, setIsHover] = useState({
@@ -12,15 +14,18 @@ const Navbar = () => {
     menu4: false,
   });
   const [isMenu, setIsMenu] = useState(false);
+  const navigate = useNavigate();
   const hoverHandler = (menu) => {
     setIsHover({ ...isHover, [menu]: true });
   };
   const closeHandler = (menu) => {
     setIsHover({ ...isHover, [menu]: false });
   };
-  
-  
-  console.log(isHover);
+
+  const topFunction = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <div className="w-full h-[100px] tl:h-[232px] mx-auto relative">
       <div className="st:max-w-[1440px] mx-auto h-full  flex flex-col">
@@ -28,7 +33,22 @@ const Navbar = () => {
           <Link to={"/"}>
             <img src="/images/blacklogo.png" alt="logo" className="w-[150px]" />
           </Link>
-          <GamburgerMenu class1={"tl:hidden"} isMenu={isMenu} setIsMenu={setIsMenu} />
+
+          <div className="tl:hidden">
+          {!isMenu ? (
+            <MenuIcon
+              onClick={() => setIsMenu(true)}
+              className="tl:hidden text-[#FF0000]"
+              fontSize="large"
+            />
+          ) : (
+            <Close
+              onClick={() => setIsMenu(false)}
+              className="tl:hidden text-[#FF0000]"
+              fontSize="large"
+            />
+          )}
+          </div>
           <div className="hidden tl:flex gap-x-[33px]">
             <div className="flex gap-x-[10px] items-center">
               <img
@@ -82,20 +102,34 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu1: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[230px]"
               >
-                <Link 
-                onClick={() => window.scrollTo({top: 700})}
-                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={`/`}
+                  onClick={() => window.scrollTo({ top: 700 })}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Каталог
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Описание
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <div
+                  onClick={() => {
+                    navigate("/about");
+                    window.scrollTo({ top: 0 });
+                  }}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Обучение чип-тюнингу
-                </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                </div>
+                <div
+                  onClick={() => {
+                    navigate("/file");
+                    window.scrollTo({ top: 0 });
+                  }}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Фаил сервис
-                </Link>
+                </div>
               </div>
             )}
 
@@ -157,20 +191,20 @@ const Navbar = () => {
             </svg>
           </NavLink>
           <NavLink
-            // to={"/market"}
+            to={"/service"}
+            onClick={topFunction}
             onMouseEnter={() => hoverHandler("menu3")}
             onMouseLeave={() => closeHandler("menu3")}
-            className={
-              ({ isActive }) =>
-                // !isActive
-                "text-mainBlack flex items-center gap-x-[10px] relative"
-              // : "text-mainRed flex items-center gap-x-[10px]"
+            className={({ isActive }) =>
+              !isActive
+                ? "text-mainBlack flex items-center gap-x-[10px] relative"
+                : "text-mainRed flex items-center gap-x-[10px] relative"
             }
           >
             {isHover.menu3 && (
               <div
                 onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
-                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300 px]"
               >
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Выхлопные системы <br />( даунпайпы и спорт выхлопы )
@@ -229,10 +263,18 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu4: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
               >
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={`/works`}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Примеры работ
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/news"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Новости
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
@@ -267,6 +309,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to={"/contact"}
+            onClick={topFunction}
             className={({ isActive }) =>
               !isActive
                 ? "text-mainBlack text-base font-montserrat font-normal"
@@ -278,7 +321,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <Sidebar isMenu={isMenu} setIsMenu={setIsMenu} />
+      {isMenu && <Sidebar isMenu={isMenu} setIsMenu={setIsMenu} />}
     </div>
   );
 };

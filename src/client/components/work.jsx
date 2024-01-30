@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyRedButton from "./ui/button/red-button";
 import MyButton from "./ui/button/button";
+import { BASE_URL, instance } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const Work = () => {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  const getData = async () => {
+    try {
+      const { data } = await instance.get(`/work?page=1&limit=3`);
+      console.log(data);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toWork = () => {
+    navigate(`/works`);
+    window.scrollTo({ top: 0 });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 md:gap-y-10 mb-6 tl:mb-20 px-[3%] sl:px-0">
       <p className="text-[28px] md:text-[40px] text-center text-mainBlack font-medium font-montserrat">
@@ -11,7 +34,7 @@ const Work = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 tl:grid-cols-3 gap-x-[20px] md:gap-y-6 gap-y-4">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
-            <img src={c.img} alt={c.title} className="h-[401px]" />
+            <img src={BASE_URL + c.img} alt={c.title} className="h-[401px]" />
             <div className="flex flex-col gap-y-4 h-[230px]">
               <p className="text-base md:text-[20px] font-medium font-montserrat text-mainBlack line-clamp-2">
                 {c.title}
@@ -19,13 +42,21 @@ const Work = () => {
               <p className="line-clamp-[7]">{c.desc}</p>
             </div>
             <MyRedButton
+              callback={() => {
+                navigate(`/work/${c?.id}`);
+                window.scrollTo({ top: 0 });
+              }}
               title={"Смотреть больше"}
               class1={`mr-auto w-[270px] md:w-[305px]`}
             />
           </div>
         ))}
       </div>
-      <MyButton title={"Смотреть больше"} class1={`w-[270px] md:w-[305px] h-[50px] sl:h-[75px] rounded-[5px] mx-auto mt-12`} />
+      <MyButton
+        callback={toWork}
+        title={"Смотреть больше"}
+        class1={`w-[270px] md:w-[305px] h-[50px] sl:h-[75px] rounded-[5px] mx-auto mt-12`}
+      />
     </div>
   );
 };

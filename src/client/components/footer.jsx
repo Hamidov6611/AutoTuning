@@ -126,7 +126,7 @@ const Footer = () => {
               Почта
             </p>
           </div>
-          <div className="flex items-center gap-x-[40px]">
+          <div className="flex items-center gap-x-[30px] sm:gap-x-[40px]">
             <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
               <svg
                 width="21"

@@ -5,9 +5,7 @@
 .hamburger input {
   display: none;
 }
-.sidebar {
-  display: none;
-}
+
 
 .hamburger svg {
   /* The size of the SVG defines the overall size */
