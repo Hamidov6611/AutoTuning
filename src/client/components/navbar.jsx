@@ -35,19 +35,19 @@ const Navbar = () => {
           </Link>
 
           <div className="tl:hidden">
-          {!isMenu ? (
-            <MenuIcon
-              onClick={() => setIsMenu(true)}
-              className="tl:hidden text-[#FF0000]"
-              fontSize="large"
-            />
-          ) : (
-            <Close
-              onClick={() => setIsMenu(false)}
-              className="tl:hidden text-[#FF0000]"
-              fontSize="large"
-            />
-          )}
+            {!isMenu ? (
+              <MenuIcon
+                onClick={() => setIsMenu(true)}
+                className="tl:hidden text-[#FF0000]"
+                fontSize="large"
+              />
+            ) : (
+              <Close
+                onClick={() => setIsMenu(false)}
+                className="tl:hidden text-[#FF0000]"
+                fontSize="large"
+              />
+            )}
           </div>
           <div className="hidden tl:flex gap-x-[33px]">
             <div className="flex gap-x-[10px] items-center">
@@ -204,7 +204,7 @@ const Navbar = () => {
             {isHover.menu3 && (
               <div
                 onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
-                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300 px]"
+                className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300px]"
               >
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Выхлопные системы <br />( даунпайпы и спорт выхлопы )
