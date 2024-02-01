@@ -9,7 +9,9 @@ module.exports = {
         mainRed: "#C00000",
         mainBlack: "#000000",
         secondRed: "#FF0000",
-        mainGreey: "#D9D9D9"
+        mainGreey: "#D9D9D9",
+        modal:" rgba(12, 12, 12, .9)",
+        modal2:" rgba(12, 12, 12, .9)"
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif']

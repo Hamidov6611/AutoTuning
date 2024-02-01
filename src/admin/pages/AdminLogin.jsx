@@ -17,6 +17,7 @@ const AdminLogin = () => {
       navigate("/admin-news");
       Cookies.set("token", data?.token);
     } catch (error) {
+      toast.error("Failed")
       console.log(error);
     }
   };

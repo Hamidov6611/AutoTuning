@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const NewsPages = () => {
   const [data, setData] = useState([]);
   const [pageId, setPageId] = useState(1);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const getData = async () => {
     try {
       const { data } = await instance.get(`/news?page=${pageId}&limit=6`);
@@ -44,7 +44,12 @@ const NewsPages = () => {
                 <p className="text-secondRed font-montserrat font-medium text-[18px] md:text-[20px] w-[80%]">
                   {c.title}
                 </p>
-                <p className="line-clamp-3 pr-3">{c.desc}</p>
+                <p
+                  className="line-clamp-3 pr-3"
+                  dangerouslySetInnerHTML={{
+                    __html: c?.desc,
+                  }}
+                />
               </div>
               <MyRedButton
                 callback={() => {

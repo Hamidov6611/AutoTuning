@@ -93,7 +93,12 @@ const WorksPages = () => {
                   <p className="text-base md:text-[20px] font-medium font-montserrat text-mainBlack line-clamp-2">
                     {c.title}
                   </p>
-                  <p className="line-clamp-[7]">{c.desc}</p>
+                  <p
+                    className="line-clamp-[7]"
+                    dangerouslySetInnerHTML={{
+                      __html: c?.desc,
+                    }}
+                  />
                 </div>
                 <MyRedButton
                   callback={() => {
