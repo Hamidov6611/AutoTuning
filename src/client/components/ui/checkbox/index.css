@@ -19,14 +19,14 @@
 
 .checkbox-wrapper .checkbox-box {
   fill: rgba(207, 205, 205, 0.425);
-  stroke: #FF0000;
+  stroke: #ff0000;
   stroke-dasharray: 800;
   stroke-dashoffset: 800;
   transition: stroke-dashoffset 0.6s ease-in;
 }
 
 .checkbox-wrapper .checkbox-tick {
-  stroke: #FF0000;
+  stroke: #ff0000;
   stroke-dasharray: 172;
   stroke-dashoffset: 172;
   transition: stroke-dashoffset 0.6s ease-in;
@@ -36,3 +36,9 @@
 .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-tick {
   stroke-dashoffset: 0;
 }
+
+  .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-box {
+    fill: white;
+    
+    transition: stroke-dashoffset 0.6s ease-in;
+  }

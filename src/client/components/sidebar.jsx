@@ -20,7 +20,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
     hide && setIsMenu(false);
   };
   return (
-    <div className="fixed top-0 left-0 h-screen bg-white w-full z-[3] tl:hidden sidebar transition-all ease-linear duration-300">
+    <div className="fixed overflow-y-auto top-0 left-0 h-screen bg-white w-full z-[3] tl:hidden sidebar transition-all ease-linear duration-300">
       <div className="h-full flex flex-col">
         <div className="px-[3%] tl:pl-0 tl:h-1/2 flex items-center h-[100px] justify-between gap-x-[33px] w-[98%] st:w-[1280px] mx-auto">
           <Link to={"/"}>

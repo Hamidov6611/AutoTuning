@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const Checkbox = () => {
+const Checkbox = ({color}) => {
   return (
     <div className="checkbox-wrapper">
       <input id="terms-checkbox-37" name="checkbox" type="checkbox" />

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Title from "../components/ui/tag/title";
 import { Layout } from "../components";
 import MyButton from "../components/ui/button/button";
+import FeedbackModal from "../components/feedback-modal";
 
 const Contact = () => {
+  const [isModal, setIsModal] = useState(false);
   return (
     <Layout
       title={`Contact`}
@@ -92,16 +94,30 @@ const Contact = () => {
           </div>
           {/* section 2 */}
           <div className="lg:w-2/3 h-full">
-            <img src="/images/image 19.png" alt="" className="mt-[80px] w-full" />
+            <img
+              src="/images/image 19.png"
+              alt=""
+              className="mt-[80px] w-full"
+            />
           </div>
         </div>
+        {isModal && <FeedbackModal setIsModal={setIsModal} />}
 
         <div className="w-full min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl px-[38px] gap-x-[36px]">
           <div className="lg:w-[80%]">
-            <p className="text-base text-mainBlack font-medium font-montserrat">Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.</p>
+            <p className="text-base text-mainBlack font-medium font-montserrat">
+              Мы дорожим своей репутацией и даем гарантию на все выполняемые
+              виды работ. При возникновении гарантийного случая или иного
+              вопроса касательно оказанных нами услуг мы максимально оперативно
+              и комфортно для Вас решим возникшие вопросы.
+            </p>
           </div>
           <div className="lg:w-[20%]">
-            <MyButton title={"Связаться с нами"} class1={`h-[45px] lg:h-[53px] px-6`}/>
+            <MyButton
+              callback={() => setIsModal(true)}
+              title={"Связаться с нами"}
+              class1={`h-[45px] lg:h-[53px] px-6`}
+            />
           </div>
         </div>
       </div>

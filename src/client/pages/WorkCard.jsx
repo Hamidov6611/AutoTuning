@@ -38,17 +38,20 @@ const WorksCard = () => {
         <div className="w-[98%] mb-20 st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 sm:py-[30px] ol:gap-y-[60px]">
           <Title>{data?.title}</Title>
 
-          <div className="w-full md:h-[719px]">
+          <div className="w-auto h-auto">
             <img
               src={BASE_URL + data?.img}
               alt={data?.title}
-              className="w-[100%] h-full bg-contain "
+              className="w-auto h-auto bg-contain "
             />
           </div>
 
-          <p className="text-base font-montserrat font-normal text-mainBlack">
-            {data?.desc}
-          </p>
+          <p
+            className="text-base font-montserrat font-normal text-mainBlack"
+            dangerouslySetInnerHTML={{
+              __html: data?.desc,
+            }}
+          />
         </div>
       )}
     </Layout>

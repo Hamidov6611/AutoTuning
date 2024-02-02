@@ -29,7 +29,7 @@ const AdminLayout = ({ children, title, desc }) => {
         <div className="w-[100%] md:w-[85%]  bg-[#1a222c]">{children}</div>
       </main>
     </>
-  ) : navigate('/login')
+  ) : navigate('/admin-login')
 };
 
 AdminLayout.defaultProps = {
