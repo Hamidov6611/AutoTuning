@@ -16,7 +16,7 @@ const AddWork = ({ setIsOpen, getData }) => {
       const data = new FormData()
       data.append("img", file)
       data.append("title", name)
-      data.append("desc", text)
+      data.append("description", text)
         await instance.post(`/work/add`, data)
         getData()
         setIsOpen(false)

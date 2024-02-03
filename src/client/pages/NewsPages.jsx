@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Feedback, Layout } from "../components";
 import Title from "../components/ui/tag/title";
-import { instance } from "../../api/axios";
+import { BASE_URL, instance } from "../../api/axios";
 import MyRedButton from "../components/ui/button/red-button";
 import { Pagination } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const NewsPages = () => {
   const [data, setData] = useState([]);
   const [pageId, setPageId] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const getData = async () => {
     try {
@@ -36,7 +37,7 @@ const NewsPages = () => {
           {data?.data?.map((c, idx) => (
             <div key={idx} className="flex flex-col gap-y-4">
               <img
-                src={`http://localhost:3001/` + c.img}
+                src={BASE_URL + c.img}
                 alt=""
                 className="md:h-[369px] h-[300px]"
               />
@@ -47,7 +48,7 @@ const NewsPages = () => {
                 <p
                   className="line-clamp-3 pr-3"
                   dangerouslySetInnerHTML={{
-                    __html: c?.desc,
+                    __html: c?.description,
                   }}
                 />
               </div>

@@ -56,7 +56,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
       <form
-        onSubmit={EditNews}
+        // onSubmit={EditNews}
         className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] h-[360px] bg-white"
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">

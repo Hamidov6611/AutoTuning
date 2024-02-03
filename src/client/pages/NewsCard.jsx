@@ -47,7 +47,7 @@ const NewsCard = () => {
           <p
             className="text-base font-montserrat font-normal text-mainBlack"
             dangerouslySetInnerHTML={{
-              __html: data?.desc,
+              __html: data?.description,
             }}
           />
         </div>

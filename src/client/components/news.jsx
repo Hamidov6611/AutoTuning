@@ -40,7 +40,7 @@ const News = () => {
               <p
                 className="line-clamp-3 pr-3"
                 dangerouslySetInnerHTML={{
-                  __html: c?.desc,
+                  __html: c?.description,
                 }}
               />
             </div>
@@ -60,25 +60,3 @@ const News = () => {
 };
 
 export default News;
-
-const news = [
-  {
-    id: 1,
-    img: "/images/new1.png",
-    title: "F30 20d N47 изготовление DOWNPIPE",
-    subtitle: "В работе BMW 320d, в кузове F30, 2013 года выпуска.",
-  },
-  {
-    id: 2,
-    img: "/images/new2.png",
-    title: "G30 20d Stage1",
-    subtitle: "В работе BMW 320d, в кузове F30, 2013 года выпуска.",
-  },
-  {
-    id: 3,
-    img: "/images/new3.png",
-    title: "FSanta Fe 2.2 CRDI Stage 1",
-    subtitle:
-      "В работе наших корейских дилеров автомобиль Hyundai Santa Fe IV, 2020 года выпуска.",
-  },
-];

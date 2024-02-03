@@ -96,7 +96,7 @@ const WorksPages = () => {
                   <p
                     className="line-clamp-[7]"
                     dangerouslySetInnerHTML={{
-                      __html: c?.desc,
+                      __html: c?.description,
                     }}
                   />
                 </div>

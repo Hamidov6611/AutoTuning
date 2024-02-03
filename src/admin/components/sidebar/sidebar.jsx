@@ -70,8 +70,8 @@ function Sidebar() {
                 to={"/admin-news"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
                 <span className="ml-3">Новости</span>
@@ -83,8 +83,8 @@ function Sidebar() {
                 to={"/admin-work"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
                 <span className="ml-3">Примеры работ</span>
@@ -97,8 +97,8 @@ function Sidebar() {
                 onClick={handleSidebar}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
                 <span className="ml-3">Категория</span>
@@ -109,8 +109,8 @@ function Sidebar() {
                 to={"/admin-service"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
                 
@@ -125,8 +125,8 @@ function Sidebar() {
                 to={"/admin-feedback"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold md:font-montserrat tracking-widest font-montserrat"
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
                 <span className="ml-3">Обратная связь</span>

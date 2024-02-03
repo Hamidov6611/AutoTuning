@@ -14,7 +14,8 @@ module.exports = {
         modal2:" rgba(12, 12, 12, .9)"
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif']
+        montserrat: ['Montserrat', 'sans-serif'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
       },
       screens: {
         'st': '1440px',
