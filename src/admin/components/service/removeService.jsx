@@ -7,7 +7,7 @@ const RemoveNews = ({ setIsRemove, getData, id }) => {
   const RemoveNews = async (e) => {
     e.preventDefault()
     try {
-        await instance.delete(`/news/${id}/`)
+        await instance.delete(`/service/${id}/`)
         getData()
         setIsRemove(false)
         toast.success("Success")
@@ -20,7 +20,7 @@ const RemoveNews = ({ setIsRemove, getData, id }) => {
     <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
       <form onSubmit={RemoveNews} className="rounded-md w-[90%] md:w-[50%] p-4 lg:w-[30%] h-[140px] bg-white">
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Удалить Новости</p>
+          <p>Удалить сервис</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"

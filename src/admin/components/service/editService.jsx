@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { instance } from "../../../api/axios";
 import toast from "react-hot-toast";
 
@@ -10,6 +8,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   const [file, setFile] = useState(null);
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState(null);
+  const [categoryId, setCategoryId] = useState(null);
   const [allCat, setAllCat] = useState([]);
   const closeHandler = () => setIsOpen(false);
   const EditNews = async (e) => {
@@ -19,8 +18,8 @@ const EditNews = ({ setIsOpen, getData, id }) => {
       data.append("img", file);
       data.append("title", name);
       data.append("price", price);
-      data.append("category", category);
-      await instance.patch(`/news/${id}/`, data);
+      data.append("category_id", (categoryId));
+      await instance.patch(`/service/${id}/`, data);
       getData();
       setIsOpen(false);
       toast.success("Success");
@@ -43,7 +42,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   };
 
   const getAll = async () => {
-    const { data } = await instance.get(`/service/all`);
+    const { data } = await instance.get(`/category/?page=1&limit=4`);
     setAllCat(data);
     console.log(data);
   };
@@ -53,10 +52,12 @@ const EditNews = ({ setIsOpen, getData, id }) => {
     getAll();
   }, [id]);
 
+  console.log(categoryId)
+
   return (
     <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
       <form
-        // onSubmit={EditNews}
+        onSubmit={EditNews}
         className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] h-[360px] bg-white"
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
@@ -89,12 +90,12 @@ const EditNews = ({ setIsOpen, getData, id }) => {
         </div>
         <div className="flex w-full my-4">
           <select
-            // onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => setCategoryId(e.target.value)}
             type="text"
             className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
           >
-            <option disabled>{category?.title}</option>
-            {allCat?.map((c, idx) => (
+            <option className="text-transparent hover:bg-transparent">{category?.title}</option>
+            {allCat?.data?.map((c, idx) => (
               <option value={c?.id} key={idx}>
                 {c?.title}
               </option>
@@ -117,7 +118,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
             onChange={(e) => setPrice(e.target.value)}
             type="text"
             className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
-            placeholder="Заголовок"
+            placeholder="цена"
           />
         </div>
 

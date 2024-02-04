@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "http://185.225.34.216:3001/api",
-  //   headers: {
-  //     Authorization: `Bearer ` + getTokenFromLocalStorage() || "",
-  //   },
+  baseURL: "http://localhost:3001/api",
 });
-export const BASE_URL = `http://185.225.34.216:3001/`;
+export const BASE_URL = `http://localhost:3001/`;
+// export const BASE_URL = `http://185.225.34.216:3001/`;

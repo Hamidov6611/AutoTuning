@@ -22,6 +22,7 @@ const Service = () => {
       console.log(data);
       setCategory(data?.data);
       setCard(data?.data[0]);
+      changeService(data?.data[0]?.id)
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +41,8 @@ const Service = () => {
 
   useEffect(() => {
     getCategory();
-    getService();
+    // getService();
+    
   }, []);
   const toggleCard = (item) => {
     changeService(item?.id);
@@ -65,10 +67,11 @@ const Service = () => {
   };
 
   const getAllService = async () => {
+    setIsLoading(true);
     try {
-      const { data } = await instance.get(`/service/all`);
-      setData(data);
-      setIsHide(false);
+      const { data } = await instance.get(`/service/?page=1&limit=98`);
+      setData(data?.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -152,7 +155,7 @@ const Service = () => {
                 className="flex flex-col gap-y-3 shadow-md md:shadow-lg xl:shadow-xl border py-4 px-3 rounded-[10px]"
               >
                 <div className="h-[147px] max-w-[282px]">
-                  <img src={`${BASE_URL}${c.img}`} alt="" />
+                  <img src={`${BASE_URL}${c.img}`} alt="" className="h-full w-full" />
                 </div>
                 <p className="text-lg mt-3 text-mainBlack font-normal text-center px-8 line-clamp-4 h-[115px]">
                   {c?.title}

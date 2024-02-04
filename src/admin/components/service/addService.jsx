@@ -1,36 +1,52 @@
-import React, { useState } from "react";
-import './index.css'
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import toast from "react-hot-toast";
+import React, { useEffect, useState } from "react";
+import "./index.css";
 import { instance } from "../../../api/axios";
+import toast from "react-hot-toast";
 
-const AddNews = ({ setIsOpen, getData }) => {
+const AddService = ({ setIsOpen, getData, id }) => {
   const [name, setName] = useState("");
-  const [file, setFile] = useState(null)
-  const [text, setText] = useState("")
+  const [file, setFile] = useState(null);
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState(null);
+  const [categoryId, setCategoryId] = useState(null);
+  const [allCat, setAllCat] = useState([]);
   const closeHandler = () => setIsOpen(false);
-  const AddNews = async (e) => {
-    e.preventDefault()
+  const AddService = async (e) => {
+    e.preventDefault();
     try {
-      const data = new FormData()
-      data.append("img", file)
-      data.append("title", name)
-      data.append("desc", text)
-        await instance.post(`/news/add`, data)
-        getData()
-        setIsOpen(false)
-        toast.success("Success")
+      const data = new FormData();
+      data.append("img", file);
+      data.append("title", name);
+      data.append("price", price);
+      data.append("category", categoryId);
+      await instance.post(`/service/add`, data);
+      getData();
+      setIsOpen(false);
+      toast.success("Success");
     } catch (error) {
-        toast.error(false)
-        console.log(error)
+      toast.error("Failed");
+      console.log(error);
     }
-  }
+  };
+
+  const getAll = async () => {
+    const { data } = await instance.get(`/category/?page=1&limit=14`);
+    setAllCat(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
   return (
-    <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal2 flex items-center justify-center z-50">
-      <form onSubmit={AddNews} className="rounded-md w-[90%] md:w-[50%] p-4 lg:w-[30%] overflow-y-auto h-[340px] bg-white">
+    <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
+      <form
+        onSubmit={AddService}
+        className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] h-[360px] bg-white"
+      >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Добавить новости</p>
+          <p>Добавить сервис</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"
@@ -46,8 +62,8 @@ const AddNews = ({ setIsOpen, getData }) => {
             />
           </svg>
         </div>
-       <div className="w-full flex">
-       <label htmlFor="fileInput" className="custom-file-upload w-full mt-4">
+        <div className="w-full flex">
+          <label htmlFor="fileInput" className="custom-file-upload w-full mt-4">
             <input
               type="file"
               id="fileInput"
@@ -56,7 +72,21 @@ const AddNews = ({ setIsOpen, getData }) => {
             />
             <span>Выберите файл</span>
           </label>
-       </div>
+        </div>
+        <div className="flex w-full my-4">
+          <select
+            onChange={(e) => setCategoryId(e.target.value)}
+            type="text"
+            className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
+          >
+            <option>Категория</option>
+            {allCat?.data?.map((c, idx) => (
+              <option value={c?.id} key={idx}>
+                {c?.title}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="flex w-full my-4">
           <input
             value={name}
@@ -66,16 +96,21 @@ const AddNews = ({ setIsOpen, getData }) => {
             placeholder="Заголовок"
           />
         </div>
-        <CKEditor
-            editor={ClassicEditor}
-            data={text}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              console.log(data);
-              setText(data);
-            }}
+
+        <div className="flex w-full my-4">
+          <input
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            type="text"
+            className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
+            placeholder="цена"
           />
-        <button type="submit" className="w-full bg-[#343434] text-white font-semibold mt-4 py-2 rounded-lg">
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-[#343434] text-white font-semibold mt-4 py-2 rounded-lg"
+        >
           Добавить
         </button>
       </form>
@@ -83,4 +118,4 @@ const AddNews = ({ setIsOpen, getData }) => {
   );
 };
 
-export default AddNews;
+export default AddService;
