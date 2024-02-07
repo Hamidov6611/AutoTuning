@@ -132,7 +132,42 @@ function Sidebar() {
                 <span className="ml-3">Обратная связь</span>
               </NavLink>
             </li>
-           
+            <li>
+              <NavLink
+                to={"/admin-model"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Модель</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={"/admin-catalog"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Каталог</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={"/admin-call"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Вызов</span>
+              </NavLink>
+            </li>
           </ul>
           <button
             onClick={toggleSidebar}

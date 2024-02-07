@@ -2,7 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import {
   Contact,
   ErrorPage,
+  ExhaustSystems,
   Home,
+  ModelPage,
+  ModelSeries,
   NewsCard,
   NewsPages,
   Service,
@@ -11,7 +14,17 @@ import {
 import WorksCard from "../client/pages/WorkCard";
 import About from "../client/pages/About";
 import FileService from "../client/pages/FileService";
-import { AdminCategory, AdminFeedback, AdminLogin, AdminNews, AdminService, AdminWork } from "../admin/pages";
+import {
+  AdminCall,
+  AdminCatalog,
+  AdminCategory,
+  AdminFeedback,
+  AdminLogin,
+  AdminModel,
+  AdminNews,
+  AdminService,
+  AdminWork,
+} from "../admin/pages";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +32,7 @@ export const router = createBrowserRouter([
     // element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      // Client router
       {
         index: true,
         element: <Home />,
@@ -56,6 +70,19 @@ export const router = createBrowserRouter([
         element: <FileService />,
       },
       {
+        path: "systems",
+        element: <ExhaustSystems />,
+      },
+      {
+        path: "systems/:slug/:id",
+        element: <ModelPage />,
+      },
+      {
+        path: "systems/models/:id",
+        element: <ModelSeries />,
+      },
+      // Admin router
+      {
         path: "admin-login",
         element: <AdminLogin />,
       },
@@ -65,19 +92,31 @@ export const router = createBrowserRouter([
       },
       {
         path: "admin-work",
-        element: <AdminWork />
+        element: <AdminWork />,
       },
       {
         path: "admin-category",
-        element: <AdminCategory />
+        element: <AdminCategory />,
       },
       {
         path: "admin-service",
-        element: <AdminService />
+        element: <AdminService />,
       },
       {
         path: "admin-feedback",
-        element: <AdminFeedback />
+        element: <AdminFeedback />,
+      },
+      {
+        path: "admin-model",
+        element: <AdminModel />,
+      },
+      {
+        path: "admin-catalog",
+        element: <AdminCatalog />,
+      },
+      {
+        path: "admin-call",
+        element: <AdminCall />
       }
     ],
   },

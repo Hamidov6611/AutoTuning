@@ -2,26 +2,25 @@ import React, { useEffect, useState } from "react";
 import AdminLayout from "../components/layout/layout";
 import { IconButton, Pagination } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { instance } from "../../api/axios";
-import AddNews from "../components/category/addCategory";
-import EditCategory from "../components/category/editCategory";
-import RemoveNews from "../components/category/removeCategory";
-import RemoveFeedback from "../components/feedback/RemoveFeedback";
+import { BASE_URL, instance } from "../../api/axios";
+import AddNews from "../components/model/addModel";
+import EditNews from "../components/model/editModel";
+import RemoveNews from "../components/model/removeModel";
 
-const AdminFeedback = () => {
+const AdminModel = () => {
   const [pageId, setPageId] = useState(1);
   const [pageSize, setPageSize] = useState(Number);
   const [isOpen, setIsOpen] = useState(false);
-  const [feedback, setFeedback] = useState([]);
+  const [news, setNews] = useState([]);
   const [isRemove, setIsRemove] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState(Number);
   const getData = async () => {
     try {
-      const { data } = await instance(`/feedback?page=${pageId}&limit=10`);
+      const { data } = await instance(`/auto-model?page=${pageId}&limit=10`);
       setPageSize(data?.count);
       console.log(data);
-      setFeedback(data?.data);
+      setNews(data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -41,12 +40,12 @@ const AdminFeedback = () => {
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Обратная связь</p>
+          <p className="text-white font-semibold text-[20px]">Модель</p>
           <IconButton
             onClick={() => setIsOpen(true)}
             sx={{ cursor: "pointer" }}
           >
-            {/* <AddCircleOutlineIcon sx={{ color: "white" }} fontSize="large" /> */}
+            <AddCircleOutlineIcon sx={{ color: "white" }} fontSize="large" />
           </IconButton>
         </div>
 
@@ -55,50 +54,50 @@ const AdminFeedback = () => {
             <table class="w-full table-auto">
               <thead className="bg-[#313d4a]">
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th class="min-w-[200px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    От кого
+                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Изображение
+                  </th>
+                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Заголовок
                   </th>
 
-                  <th class="min-w-[400px] sm:max-w-[400px] capitalize py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    Комментарий
-                  </th>
-
-                  <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
+                  <th class="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
                   </th>
                 </tr>
               </thead>
 
+              {isOpen && <AddNews setIsOpen={setIsOpen} getData={getData} />}
               {isRemove && (
-                <RemoveFeedback
+                <RemoveNews
                   setIsRemove={setIsRemove}
                   getData={getData}
                   id={itemId}
                 />
               )}
 
-              
+              {isEdit && (
+                <EditNews setIsOpen={setIsEdit} getData={getData} id={itemId} />
+              )}
 
               <tbody>
-                {feedback?.map((c, index) => (
+                {news?.map((c, index) => (
                   <tr key={index}>
+                    <td class="border-b border-[#eee] py-5 pl-2 dark:border-strokedark xl:pl-11">
+                      <img
+                        src={`${BASE_URL}${c?.img}`}
+                        alt=""
+                        className="w-[86px] h-[86px] rounded-md"
+                      />
+                    </td>
                     <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
                       <h5 class="font-medium text-black dark:text-white line-clamp-1">
-                        {c?.name}
-                      </h5>
-                      <h5 class="font-medium text-black dark:text-white line-clamp-1">
-                        {c?.phone}
-                      </h5>
-                    </td>
-
-                    <td class="border-b w-[400px] sm:max-w-[400px] border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 class="font-medium text-black dark:text-white ">
-                        {c?.comment}
+                        {c?.title}
                       </h5>
                     </td>
 
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <div class="flex items-center justify-center sm:justify-start ml-4">
+                      <div class="flex items-center justify-center sm:justify-start space-x-3.5">
                         <button
                           onClick={() => handleRemove(c?.id)}
                           class="hover:text-primary"
@@ -129,6 +128,19 @@ const AdminFeedback = () => {
                             />
                           </svg>
                         </button>
+                        <button
+                          onClick={() => handleEdit(c?.id)}
+                          class="hover:text-primary fill-green-600"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 512 512"
+                          >
+                            {/*! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. */}
+                            <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z" />
+                          </svg>
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -156,4 +168,4 @@ const AdminFeedback = () => {
   );
 };
 
-export default AdminFeedback;
+export default AdminModel;

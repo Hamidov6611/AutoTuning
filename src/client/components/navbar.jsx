@@ -164,7 +164,7 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu2: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[280px]"
               >
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link to={'/systems'} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Выхлопные системы
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">

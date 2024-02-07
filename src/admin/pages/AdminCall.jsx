@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../components/layout/layout";
-import { IconButton, Pagination } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { Pagination } from "@mui/material";
 import { instance } from "../../api/axios";
-import AddNews from "../components/category/addCategory";
-import EditCategory from "../components/category/editCategory";
-import RemoveNews from "../components/category/removeCategory";
-import RemoveFeedback from "../components/feedback/RemoveFeedback";
+import AddNews from "../components/news/addNews";
+import EditNews from "../components/news/editNews";
+import RemoveNews from "../components/call/removeCall";
+import moment from "moment";
 
-const AdminFeedback = () => {
+const AdminCall = () => {
   const [pageId, setPageId] = useState(1);
   const [pageSize, setPageSize] = useState(Number);
   const [isOpen, setIsOpen] = useState(false);
-  const [feedback, setFeedback] = useState([]);
+  const [news, setNews] = useState([]);
   const [isRemove, setIsRemove] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [itemId, setItemId] = useState(Number);
   const getData = async () => {
     try {
-      const { data } = await instance(`/feedback?page=${pageId}&limit=10`);
+      const { data } = await instance(`/call?page=${pageId}&limit=10`);
       setPageSize(data?.count);
       console.log(data);
-      setFeedback(data?.data);
+      setNews(data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -33,21 +32,11 @@ const AdminFeedback = () => {
     setItemId(id);
     setIsRemove(true);
   };
-  const handleEdit = (id) => {
-    setItemId(id);
-    setIsEdit(true);
-  };
   return (
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Обратная связь</p>
-          <IconButton
-            onClick={() => setIsOpen(true)}
-            sx={{ cursor: "pointer" }}
-          >
-            {/* <AddCircleOutlineIcon sx={{ color: "white" }} fontSize="large" /> */}
-          </IconButton>
+          <p className="text-white font-semibold text-[20px]">Вызов</p>
         </div>
 
         <div class="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
@@ -55,50 +44,57 @@ const AdminFeedback = () => {
             <table class="w-full table-auto">
               <thead className="bg-[#313d4a]">
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th class="min-w-[200px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    От кого
+                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    От кого?
+                  </th>
+                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Номер телефона
+                  </th>
+                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Время
                   </th>
 
-                  <th class="min-w-[400px] sm:max-w-[400px] capitalize py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    Комментарий
-                  </th>
-
-                  <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
+                  <th class="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
                   </th>
                 </tr>
               </thead>
 
+              {isOpen && <AddNews setIsOpen={setIsOpen} getData={getData} />}
               {isRemove && (
-                <RemoveFeedback
+                <RemoveNews
                   setIsRemove={setIsRemove}
                   getData={getData}
                   id={itemId}
                 />
               )}
 
-              
+              {isEdit && (
+                <EditNews setIsOpen={setIsEdit} getData={getData} id={itemId} />
+              )}
 
               <tbody>
-                {feedback?.map((c, index) => (
+                {news?.map((c, index) => (
                   <tr key={index}>
-                    <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                    <td class="border-b border-[#eee] py-5 pl-2 dark:border-strokedark xl:pl-11">
                       <h5 class="font-medium text-black dark:text-white line-clamp-1">
                         {c?.name}
                       </h5>
+                    </td>
+                    <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
                       <h5 class="font-medium text-black dark:text-white line-clamp-1">
                         {c?.phone}
                       </h5>
                     </td>
 
-                    <td class="border-b w-[400px] sm:max-w-[400px] border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 class="font-medium text-black dark:text-white ">
-                        {c?.comment}
+                    <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 class="font-medium text-black dark:text-white line-clamp-1">
+                        {moment(c?.date).format("DD-MM-YYYY")}
                       </h5>
                     </td>
 
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <div class="flex items-center justify-center sm:justify-start ml-4">
+                      <div class="flex items-center justify-center sm:justify-start space-x-3.5 ml-6">
                         <button
                           onClick={() => handleRemove(c?.id)}
                           class="hover:text-primary"
@@ -156,4 +152,4 @@ const AdminFeedback = () => {
   );
 };
 
-export default AdminFeedback;
+export default AdminCall;
