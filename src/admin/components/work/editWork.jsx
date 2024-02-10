@@ -31,7 +31,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
       const { data } = await instance.get(`/work/${id}/`);
       console.log(data);
       setName(data?.title);
-      setText(data?.desc);
+      setText(data?.description);
       setFile(data?.img);
     } catch (error) {
       console.log(error);

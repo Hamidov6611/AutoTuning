@@ -7,5 +7,6 @@ import AdminFeedback from "./AdminFeedback";
 import AdminModel from "./AdminModel";
 import AdminCatalog from "./AdminCatalog";
 import AdminCall from "./AdminCall";
+import AdminStock from "./AdminStock";
 
-export { AdminLogin, AdminNews, AdminWork, AdminCategory, AdminService, AdminFeedback, AdminModel, AdminCatalog, AdminCall };
+export { AdminLogin, AdminNews, AdminWork, AdminCategory, AdminService, AdminFeedback, AdminModel, AdminCatalog, AdminCall, AdminStock };

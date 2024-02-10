@@ -1,54 +1,36 @@
-import React, { useEffect, useState } from "react";
-import "./index.css";
+import React, { useState } from "react";
+import './index.css'
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { instance } from "../../../api/axios";
 import toast from "react-hot-toast";
+import { instance } from "../../../api/axios";
 
-const EditNews = ({ setIsOpen, getData, id }) => {
+const AddStock = ({ setIsOpen, getData }) => {
   const [name, setName] = useState("");
-  const [file, setFile] = useState(null);
-  const [text, setText] = useState("");
+  const [file, setFile] = useState(null)
+  const [text, setText] = useState("")
   const closeHandler = () => setIsOpen(false);
-  const EditNews = async (e) => {
-    e.preventDefault();
+  const AddStock = async (e) => {
+    e.preventDefault()
     try {
-      const data = new FormData();
-      data.append("img", file);
-      data.append("title", name);
-      data.append("description", text);
-      await instance.patch(`/news/${id}/`, data);
-      getData();
-      setIsOpen(false);
-      toast.success("Success");
+      const data = new FormData()
+      data.append("img", file)
+      data.append("title", name)
+      data.append("description", text)
+        await instance.post(`/stock/add`, data)
+        getData()
+        setIsOpen(false)
+        toast.success("Success")
     } catch (error) {
-      toast.error("Failed");
-      console.log(error);
+        toast.error(false)
+        console.log(error)
     }
-  };
-  const getPrevData = async () => {
-    try {
-      const { data } = await instance.get(`/news/${id}/`);
-      console.log(data);
-      setName(data[0]?.title);
-      setText(data[0]?.description);
-      setFile(data[0]?.img);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getPrevData();
-  }, [id]);
+  }
   return (
-    <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
-      <form
-        onSubmit={EditNews}
-        className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] h-[340px] bg-white"
-      >
+    <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal2 flex items-center justify-center z-50">
+      <form onSubmit={AddStock} className="rounded-md w-[90%] md:w-[50%] p-4 lg:w-[30%] overflow-y-auto h-[340px] bg-white">
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Изменить новости</p>
+          <p>Добавить акции</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"
@@ -64,8 +46,8 @@ const EditNews = ({ setIsOpen, getData, id }) => {
             />
           </svg>
         </div>
-        <div className="w-full flex">
-          <label htmlFor="fileInput" className="custom-file-upload w-full mt-4">
+       <div className="w-full flex">
+       <label htmlFor="fileInput" className="custom-file-upload w-full mt-4">
             <input
               type="file"
               id="fileInput"
@@ -74,7 +56,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
             />
             <span>Выберите файл</span>
           </label>
-        </div>
+       </div>
         <div className="flex w-full my-4">
           <input
             value={name}
@@ -85,23 +67,20 @@ const EditNews = ({ setIsOpen, getData, id }) => {
           />
         </div>
         <CKEditor
-          editor={ClassicEditor}
-          data={text}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            console.log(data);
-            setText(data);
-          }}
-        />
-        <button
-          type="submit"
-          className="w-full bg-[#343434] text-white font-semibold mt-4 py-2 rounded-lg"
-        >
-          Изменить
+            editor={ClassicEditor}
+            data={text}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              console.log(data);
+              setText(data);
+            }}
+          />
+        <button type="submit" className="w-full bg-[#343434] text-white font-semibold mt-4 py-2 rounded-lg">
+          Добавить
         </button>
       </form>
     </div>
   );
 };
 
-export default EditNews;
+export default AddStock;

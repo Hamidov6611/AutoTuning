@@ -168,6 +168,18 @@ function Sidebar() {
                 <span className="ml-3">Вызов</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/admin-stock"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Акции</span>
+              </NavLink>
+            </li>
           </ul>
           <button
             onClick={toggleSidebar}

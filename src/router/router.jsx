@@ -26,6 +26,7 @@ import {
   AdminModel,
   AdminNews,
   AdminService,
+  AdminStock,
   AdminWork,
 } from "../admin/pages";
 
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
         path: "admin-call",
         element: <AdminCall />,
       },
+      {
+        path: "admin-stock",
+        element: <AdminStock />
+      }
     ],
   },
 ]);

@@ -5,19 +5,19 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { instance } from "../../../api/axios";
 import toast from "react-hot-toast";
 
-const EditNews = ({ setIsOpen, getData, id }) => {
+const EditStock = ({ setIsOpen, getData, id }) => {
   const [name, setName] = useState("");
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
   const closeHandler = () => setIsOpen(false);
-  const EditNews = async (e) => {
+  const EditStock = async (e) => {
     e.preventDefault();
     try {
       const data = new FormData();
       data.append("img", file);
       data.append("title", name);
       data.append("description", text);
-      await instance.patch(`/news/${id}/`, data);
+      await instance.patch(`/stock/${id}/`, data);
       getData();
       setIsOpen(false);
       toast.success("Success");
@@ -28,7 +28,7 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   };
   const getPrevData = async () => {
     try {
-      const { data } = await instance.get(`/news/${id}/`);
+      const { data } = await instance.get(`/stock/${id}/`);
       console.log(data);
       setName(data[0]?.title);
       setText(data[0]?.description);
@@ -44,11 +44,11 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-[100vh] bg-modal flex items-center justify-center z-50">
       <form
-        onSubmit={EditNews}
+        onSubmit={EditStock}
         className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] h-[340px] bg-white"
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Изменить новости</p>
+          <p>Изменить акции</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"
@@ -89,7 +89,6 @@ const EditNews = ({ setIsOpen, getData, id }) => {
           data={text}
           onChange={(event, editor) => {
             const data = editor.getData();
-            console.log(data);
             setText(data);
           }}
         />
@@ -104,4 +103,4 @@ const EditNews = ({ setIsOpen, getData, id }) => {
   );
 };
 
-export default EditNews;
+export default EditStock;
