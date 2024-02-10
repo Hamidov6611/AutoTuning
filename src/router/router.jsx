@@ -3,12 +3,15 @@ import {
   Contact,
   ErrorPage,
   ExhaustSystems,
+  FilterPages,
   Home,
   ModelPage,
   ModelSeries,
   NewsCard,
   NewsPages,
   Service,
+  StockDetail,
+  StockPages,
   WorksPages,
 } from "../client/pages";
 import WorksCard from "../client/pages/WorkCard";
@@ -81,6 +84,18 @@ export const router = createBrowserRouter([
         path: "systems/models/:id",
         element: <ModelSeries />,
       },
+      {
+        path: "filter",
+        element: <FilterPages />,
+      },
+      {
+        path: "stock",
+        element: <StockPages />,
+      },
+      {
+        path: "stock/:id",
+        element: <StockDetail />
+      },
       // Admin router
       {
         path: "admin-login",
@@ -116,8 +131,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "admin-call",
-        element: <AdminCall />
-      }
+        element: <AdminCall />,
+      },
     ],
   },
 ]);

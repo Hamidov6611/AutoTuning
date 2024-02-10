@@ -170,7 +170,7 @@ const Navbar = () => {
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Отключение катализатора
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link to={'/filter'} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Отключение сажевого фильтра
                 </Link>
               </div>

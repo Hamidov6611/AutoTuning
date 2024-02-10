@@ -50,7 +50,7 @@ const News = () => {
                 navigate(`/news/${c?.id}`);
                 window.scrollTo({ top: 0 });
               }}
-              class1={"mr-auto w-[182px] font-montserrat"}
+              class1={"mx-auto sm:mx-0 sm:mr-auto w-[182px] font-montserrat"}
             />
           </div>
         ))}

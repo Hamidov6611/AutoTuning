@@ -34,7 +34,7 @@ const Work = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 tl:grid-cols-3 gap-x-[20px] md:gap-y-6 gap-y-4">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
-            <img src={BASE_URL + c.img} alt={c.title} className="h-[401px]" />
+            <img src={BASE_URL + c.img} alt={c.title} className="h-[350px] sm:h-[401px]" />
             <div className="flex flex-col gap-y-4 h-[230px]">
               <p className="text-base md:text-[20px] font-medium font-montserrat text-mainBlack line-clamp-2">
                 {c.title}
@@ -52,16 +52,18 @@ const Work = () => {
                 window.scrollTo({ top: 0 });
               }}
               title={"Смотреть больше"}
-              class1={`mr-auto w-[270px] md:w-[305px]`}
+              class1={`mx-auto sm:mx-0 sm:mr-auto w-[270px] md:w-[305px]`}
             />
           </div>
         ))}
       </div>
-      <MyButton
-        callback={toWork}
-        title={"Смотреть больше"}
-        class1={`w-[270px] md:w-[305px] h-[50px] sl:h-[75px] rounded-[5px] mx-auto mt-12`}
-      />
+      <div className="flex w-full sm:justify-start justify-center">
+        <MyButton
+          callback={toWork}
+          title={"Смотреть больше"}
+          class1={`w-[270px] md:w-[305px] h-[50px] sl:h-[75px] rounded-[5px] mx-auto mt-12`}
+        />
+      </div>
     </div>
   );
 };

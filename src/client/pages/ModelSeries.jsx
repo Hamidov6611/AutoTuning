@@ -4,6 +4,7 @@ import Title from "../components/ui/tag/title";
 import { BASE_URL, instance } from "../../api/axios";
 import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VidepPlayer";
+import Feedback2 from "../components/feedback2";
 
 const ModelSeries = () => {
   const [catalog, setCatalog] = useState(null);
@@ -36,7 +37,7 @@ const ModelSeries = () => {
         <p className="text-center font-normal font-montserrat text-[20px] md:text-[28px] md:my-7">Видео с активированным Popcorn</p>
       
         <VideoPlayer src={BASE_URL + catalog?.video} alt={catalog?.video} />
-      
+       <Feedback2 />
       </div>
     </Layout>
   );

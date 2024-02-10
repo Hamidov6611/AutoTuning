@@ -40,7 +40,7 @@ const NewsCard = () => {
             <img
               src={BASE_URL + data?.img}
               alt={data?.title}
-              className="w-auto h-auto bg-contain "
+              className="sm:w-auto h-[300px] w-full sm:h-auto bg-contain "
             />
           </div>
 

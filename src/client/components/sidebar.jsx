@@ -179,7 +179,10 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
                 <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Отключение катализатора
                 </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <div
+                  onClick={() => sendNext("/filter")}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Отключение сажевого фильтра
                 </div>
               </div>
@@ -248,7 +251,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
 
           {/* nav 5 */}
           <div
-          // onClick={() => sendNext("/", true)}
+          onClick={() => sendNext("/stock", true)}
           >
             <p>Акции</p>
           </div>

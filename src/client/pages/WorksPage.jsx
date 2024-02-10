@@ -87,7 +87,7 @@ const WorksPages = () => {
                 <img
                   src={BASE_URL + c.img}
                   alt={c.title}
-                  className="h-[401px]"
+                  className="h-[350px] sm:h-[401px]"
                 />
                 <div className="flex flex-col gap-y-4 h-[230px]">
                   <p className="text-base md:text-[20px] font-medium font-montserrat text-mainBlack line-clamp-2">
@@ -106,7 +106,7 @@ const WorksPages = () => {
                     window.scrollTo({ top: 0 });
                   }}
                   title={"Смотреть больше"}
-                  class1={`mr-auto w-[270px] md:w-[305px]`}
+                  class1={`mx-auto sm:mx-0 sm:mr-auto w-[270px] md:w-[305px]`}
                 />
               </div>
             ))}

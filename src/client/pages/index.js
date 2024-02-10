@@ -8,5 +8,8 @@ import NewsCard from "./NewsCard";
 import ExhaustSystems from "./ExhaustSystems";
 import ModelPage from "./ModelPage";
 import ModelSeries from "./ModelSeries";
+import FilterPages from "./FilterPages";
+import StockPages from "./StockPages";
+import StockDetail from "./StockDetail";
 
-export { Home, ErrorPage, Contact, NewsPages, WorksPages, Service, NewsCard, ExhaustSystems, ModelPage, ModelSeries };
+export { Home, ErrorPage, Contact, NewsPages, WorksPages, Service, NewsCard, ExhaustSystems, ModelPage, ModelSeries, FilterPages, StockPages, StockDetail };
