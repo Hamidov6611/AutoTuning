@@ -35,6 +35,10 @@ const Service = () => {
 
   useEffect(() => {
     getCategory() 
+  },[])
+
+  useEffect(() => {
+    
     categoryId && changeService(parseInt(categoryId));
 
     async function getCategoryById() {
@@ -43,7 +47,7 @@ const Service = () => {
     }
 
     categoryId && getCategoryById()
-  }, []);
+  }, [categoryId]);
   const toggleCard = (item) => {
     changeService(item?.id);
     setCard(item);
