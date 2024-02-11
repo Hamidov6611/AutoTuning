@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyRedButton from "./ui/button/red-button";
 import { BASE_URL, instance } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
+import MobileNews from "./MobileNews";
 
 const News = () => {
   const [data, setData] = useState([]);
@@ -10,7 +11,6 @@ const News = () => {
   const getData = async () => {
     try {
       const { data } = await instance.get(`/news?page=1&limit=3`);
-      console.log(data);
       setData(data.data);
     } catch (error) {
       console.log(error);
@@ -25,7 +25,7 @@ const News = () => {
       <p className="w-full text-center font-medium font-montserrat text-[28px] md:text-[40px]">
         Новости
       </p>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
+      <div className="w-full hidden sm:grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
             <img
@@ -55,6 +55,7 @@ const News = () => {
           </div>
         ))}
       </div>
+      <MobileNews news={data} />
     </div>
   );
 };

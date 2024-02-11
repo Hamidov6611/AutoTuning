@@ -5,6 +5,7 @@ import Loader from "../components/ui/loader/loader";
 import { BASE_URL, instance } from "../../api/axios";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import CloseIcon from "@mui/icons-material/Close";
+import { useLocation } from "react-router-dom";
 
 const Service = () => {
   const [data, setData] = useState([]);
@@ -16,33 +17,32 @@ const Service = () => {
   const [isHide, setIsHide] = useState(true);
   const [isService, setIsService] = useState(false);
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  let categoryId = queryParams.get("id");
+
   const getCategory = async () => {
     try {
       const { data } = await instance(`/category/?page=1&limit=4`);
       console.log(data);
       setCategory(data?.data);
-      setCard(data?.data[0]);
-      changeService(data?.data[0]?.id)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getService = async () => {
-    setIsLoading(true);
-    try {
-      const { data } = await instance.get(`/service/?page=1&limit=8`);
-      setData(data?.data);
-      setIsLoading(false);
+      !categoryId && setCard(data?.data[0]);
+      !categoryId && changeService(data?.data[0]?.id);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getCategory();
-    // getService();
-    
+    getCategory() 
+    categoryId && changeService(parseInt(categoryId));
+
+    async function getCategoryById() {
+      const {data} = await instance.get(`/category/${categoryId}`)
+      setCard(data)
+    }
+
+    categoryId && getCategoryById()
   }, []);
   const toggleCard = (item) => {
     changeService(item?.id);
@@ -58,9 +58,10 @@ const Service = () => {
   const changeService = async (id) => {
     setIsLoading(true);
     try {
-      const { data } = await instance.get(`/service/find/?id=${id}`);
+      const { data } = await instance.get(`/service/find/?id=${categoryId ? categoryId : id}`);
       setData(data);
       setIsLoading(false);
+      console.log(data)
     } catch (error) {
       console.log(error);
     }
@@ -155,7 +156,11 @@ const Service = () => {
                 className="flex flex-col gap-y-3 shadow-md md:shadow-lg xl:shadow-xl border py-4 px-3 rounded-[10px]"
               >
                 <div className="h-[147px] max-w-[282px]">
-                  <img src={`${BASE_URL}${c.img}`} alt="" className="h-full w-full" />
+                  <img
+                    src={`${BASE_URL}${c.img}`}
+                    alt=""
+                    className="h-full w-full"
+                  />
                 </div>
                 <p className="text-lg mt-3 text-mainBlack font-normal text-center px-8 line-clamp-4 h-[115px]">
                   {c?.title}

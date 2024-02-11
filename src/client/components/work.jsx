@@ -3,6 +3,7 @@ import MyRedButton from "./ui/button/red-button";
 import MyButton from "./ui/button/button";
 import { BASE_URL, instance } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
+import MobileWork from "./MobileWork";
 
 const Work = () => {
   const [data, setData] = useState([]);
@@ -11,8 +12,7 @@ const Work = () => {
   const getData = async () => {
     try {
       const { data } = await instance.get(`/work?page=1&limit=3`);
-      console.log(data);
-      setData(data.data);
+      setData(data?.data);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +31,7 @@ const Work = () => {
       <p className="text-[28px] md:text-[40px] text-center text-mainBlack font-medium font-montserrat">
         Примеры работ
       </p>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 tl:grid-cols-3 gap-x-[20px] md:gap-y-6 gap-y-4">
+      <div className="w-full hidden sm:grid grid-cols-1 md:grid-cols-2 tl:grid-cols-3 gap-x-[20px] md:gap-y-6 gap-y-4">
         {data?.map((c, idx) => (
           <div key={idx} className="flex flex-col gap-y-4">
             <img src={BASE_URL + c.img} alt={c.title} className="h-[350px] sm:h-[401px]" />
@@ -57,6 +57,7 @@ const Work = () => {
           </div>
         ))}
       </div>
+      <MobileWork work={data} />
       <div className="flex w-full sm:justify-start justify-center">
         <MyButton
           callback={toWork}

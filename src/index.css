@@ -30,3 +30,11 @@ html {
   color: white !important;
   font-weight: 600 !important;
 }
+
+.swiper-button-next::after {
+  color: #FF0000;
+}
+
+.swiper-button-prev::after {
+  color: #FF0000;
+}

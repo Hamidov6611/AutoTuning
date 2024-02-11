@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import GamburgerMenu from "./ui/menu/GamburgerMenu";
 import Sidebar from "./sidebar";
 import "./ui/menu/menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Close } from "@mui/icons-material";
+import { instance } from "../../api/axios";
 
 const Navbar = () => {
   const [isHover, setIsHover] = useState({
@@ -13,6 +13,8 @@ const Navbar = () => {
     menu3: false,
     menu4: false,
   });
+  
+  const [category, setCategory] = useState([])
   const [isMenu, setIsMenu] = useState(false);
   const navigate = useNavigate();
   const hoverHandler = (menu) => {
@@ -25,6 +27,16 @@ const Navbar = () => {
   const topFunction = () => {
     window.scrollTo({ top: 0 });
   };
+ 
+  useEffect(() => {
+    async function getCategory() {
+      const {data} = await instance.get(`category?page=1&limit=4`)
+      setCategory(data?.data)
+    }
+    
+    getCategory()
+  }, [])
+
 
   return (
     <div className="w-full h-[100px] tl:h-[232px] mx-auto relative">
@@ -206,18 +218,13 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300px]"
               >
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Выхлопные системы <br />( даунпайпы и спорт выхлопы )
+                
+                {category?.map((c, idx) => (
+                  <Link to={`/service?id=${c?.id}`} onClick={topFunction} key={idx} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  {c?.title}
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Винил
-                </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Спортивные диски
-                </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Тормозные системы
-                </Link>
+                ))}
+                
               </div>
             )}
             <p className="text-base font-montserrat font-normal">
