@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Feedback, Layout } from "../components";
 import Title from "../components/ui/tag/title";
-import { BASE_URL, instance } from "../../api/axios";
+import { BASE_LINK, BASE_URL, instance } from "../../api/axios";
 import MyRedButton from "../components/ui/button/red-button";
 import { Pagination } from "@mui/material";
 import Loader from "../components/ui/loader/loader";
@@ -44,10 +44,10 @@ const WorksPages = () => {
   }, [title]);
   return (
     <Layout
-      title={``}
-      subtitle={`Наши работы`}
-      description={`Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.`}
-      link={`https://auto-tuning.vercel.app/works`}
+      title={`Примеры наших работ | RACECODE`}
+      subtitle={`Примеры наших работ МСК`}
+      description={`RACECODE - Ознакомьтесь с примерами наших работ по тюнингу автомобилей в Москве! Профессиональный чип-тюнинг`}
+      link={BASE_LINK + "works"}
     >
       {isLoading ? (
         <Loader />

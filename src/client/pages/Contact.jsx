@@ -3,15 +3,16 @@ import Title from "../components/ui/tag/title";
 import { Layout } from "../components";
 import MyButton from "../components/ui/button/button";
 import FeedbackModal from "../components/feedback-modal";
+import { BASE_LINK } from "../../api/axios";
 
 const Contact = () => {
   const [isModal, setIsModal] = useState(false);
   return (
     <Layout
-      title={`Contact`}
-      subtitle={`Contact`}
-      description={`Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.`}
-      link={`https://auto-tuning.vercel.app/contact`}
+      title={`Контакты | RACECODE`}
+      subtitle={`Контакты МСК`}
+      description={`RACECODE - Контактная информация нашего чип-тюнинг сервиса! Записывайтесь онлайн на чип-тюнинг в МСК`}
+      link={BASE_LINK + "contact"}
     >
       <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 py-[30px] ol:gap-y-[60px]">
         <Title>Контакты</Title>

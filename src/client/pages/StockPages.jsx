@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Feedback, Layout } from "../components";
 import Title from "../components/ui/tag/title";
-import { BASE_URL, instance } from "../../api/axios";
+import { BASE_LINK, BASE_URL, instance } from "../../api/axios";
 import { Pagination } from "@mui/material";
 import Loader from "../components/ui/loader/loader";
 import MyRedButton from "../components/ui/button/red-button";
@@ -29,10 +29,10 @@ const StockPages = () => {
   }, [pageId]);
   return (
     <Layout
-      title={`Акции`}
-      subtitle={`Акции`}
-      description={`Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.`}
-      link={`https://auto-tuning.vercel.app/stock`}
+      title={`Акции на чип-тюнинг вашего авто в МСК | RACECODE`}
+      subtitle={`Акции на чип-тюнинг МСК`}
+      description={`RACECODE - У нас вы найдёте множество акций на тюнинг вашего автомобился в Москве! Записывайтесь онлайн у нас на сайте`}
+      link={BASE_LINK+"stock"}
     >
       {isLoading ? (
         <Loader />

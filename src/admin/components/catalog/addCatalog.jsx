@@ -48,7 +48,7 @@ const AddService = ({ setIsOpen, getData, id }) => {
         className="rounded-md w-[90%] md:w-[50%] p-4 overflow-y-auto lg:w-[30%] min-h-[360px] bg-white"
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Добавить каталог</p>
+          <p>Добавить Под-модель</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"

@@ -153,7 +153,7 @@ function Sidebar() {
                     : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
                 }
               >
-                <span className="ml-3">Каталог</span>
+                <span className="ml-3">Под-модель</span>
               </NavLink>
             </li>
             <li>

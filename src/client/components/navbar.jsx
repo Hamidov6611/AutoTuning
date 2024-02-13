@@ -13,8 +13,8 @@ const Navbar = () => {
     menu3: false,
     menu4: false,
   });
-  
-  const [category, setCategory] = useState([])
+
+  const [category, setCategory] = useState([]);
   const [isMenu, setIsMenu] = useState(false);
   const navigate = useNavigate();
   const hoverHandler = (menu) => {
@@ -27,16 +27,24 @@ const Navbar = () => {
   const topFunction = () => {
     window.scrollTo({ top: 0 });
   };
- 
+
   useEffect(() => {
     async function getCategory() {
-      const {data} = await instance.get(`category?page=1&limit=4`)
-      setCategory(data?.data)
+      const { data } = await instance.get(`category?page=1&limit=4`);
+      setCategory(data?.data);
     }
-    
-    getCategory()
-  }, [])
 
+    getCategory();
+  }, []);
+
+  const adress = () => {
+    let address = "Киевская ул., д. 14, стр. 1, этаж 3";
+    let encodedAddress = encodeURIComponent(address);
+    let yandexMapsUrl = "https://yandex.ru/maps/?text=" + encodedAddress;
+
+    // Foydalanuvchini yangi oynada Yandex Xaritaga yuborish
+    window.open(yandexMapsUrl, "_blank");
+  };
 
   return (
     <div className="w-full h-[100px] tl:h-[232px] mx-auto relative">
@@ -62,7 +70,10 @@ const Navbar = () => {
             )}
           </div>
           <div className="hidden tl:flex gap-x-[33px]">
-            <div className="flex gap-x-[10px] items-center">
+            <div 
+            role="button"
+            onClick={adress}
+            className="flex gap-x-[10px] items-center">
               <img
                 src="/images/location.png"
                 alt="location"
@@ -176,13 +187,21 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu2: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[280px]"
               >
-                <Link to={'/systems'} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/systems"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Выхлопные системы
                 </Link>
                 <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Отключение катализатора
                 </Link>
-                <Link to={'/filter'} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/filter"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Отключение сажевого фильтра
                 </Link>
               </div>
@@ -218,13 +237,16 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300px]"
               >
-                
                 {category?.map((c, idx) => (
-                  <Link to={`/service?id=${c?.id}`} onClick={topFunction} key={idx} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  {c?.title}
-                </Link>
+                  <Link
+                    to={`/service?id=${c?.id}`}
+                    onClick={topFunction}
+                    key={idx}
+                    className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                  >
+                    {c?.title}
+                  </Link>
                 ))}
-                
               </div>
             )}
             <p className="text-base font-montserrat font-normal">

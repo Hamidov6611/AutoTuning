@@ -27,13 +27,13 @@ const News = () => {
       </p>
       <div className="w-full hidden sm:grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
         {data?.map((c, idx) => (
-          <div key={idx} className="flex flex-col gap-y-4">
+          <div key={idx} className="flex flex-col gap-y-4 hover:shadow-2xl hover:pb-4 rounded-b-xl transition-all duration-200 ease-out">
             <img
               src={BASE_URL + c.img}
               alt=""
               className="md:h-[369px] h-[300px]"
             />
-            <div className="h-[145px] space-y-3">
+            <div className="h-[145px] space-y-3 px-[3%]">
               <p className="text-secondRed font-montserrat font-medium text-[18px] md:text-[20px] w-[80%]">
                 {c.title}
               </p>
@@ -50,7 +50,7 @@ const News = () => {
                 navigate(`/news/${c?.id}`);
                 window.scrollTo({ top: 0 });
               }}
-              class1={"mx-auto sm:mx-0 sm:mr-auto w-[182px] font-montserrat"}
+              class1={"mx-auto sm:mx-[3%] sm:mr-auto w-[182px] font-montserrat"}
             />
           </div>
         ))}

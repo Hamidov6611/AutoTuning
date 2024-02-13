@@ -14,7 +14,7 @@ const Layout = ({ children, description, title, link, subtitle }) => {
         <meta property="og:title" content={subtitle} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={link} />
-        <meta property="og:site_name" content="Usertech - Digital агенство" />
+        <meta property="og:site_name" content="Каталог деталей для тюнинга МСК" />
       </Helmet>
       <Navbar />
       <main>{children}</main>
@@ -28,7 +28,7 @@ const Layout = ({ children, description, title, link, subtitle }) => {
 
 Layout.defaultProps = {
   title: "ЧИП-ТЮНИНГ",
-  link: "https://auto-tuning.vercel.app/",
+  link: "http://www.k222la6a.beget.tech/",
   description:
     "Чип-тюнинг - изменения данных зыписанных в электронном блоке управления",
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Feedback, Layout } from "../components";
 import Title from "../components/ui/tag/title";
-import { BASE_URL, instance } from "../../api/axios";
+import { BASE_LINK, BASE_URL, instance } from "../../api/axios";
 import MyRedButton from "../components/ui/button/red-button";
 import { Pagination } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -27,10 +27,10 @@ const NewsPages = () => {
   }, []);
   return (
     <Layout
-      title={`Новости`}
+      title={`Новости | RACECODE`}
       subtitle={`Новости`}
-      description={`Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.`}
-      link={`https://auto-tuning.vercel.app/news`}
+      description={`RACECODE - Новости о тюнинге автомобилей! Профессиональный чип-тюнинг в Москве. Записывайтесь онлайн`}
+      link={BASE_LINK + "news"}
     >
       {isLoading ? (
         <Loader />
@@ -39,13 +39,13 @@ const NewsPages = () => {
           <Title>Новости</Title>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 lg:grid-cols-3 gap-x-6 tl:mb-20">
             {data?.data?.map((c, idx) => (
-              <div key={idx} className="flex flex-col gap-y-4">
+              <div key={idx} className="flex flex-col gap-y-4 hover:shadow-2xl hover:pb-4 rounded-b-xl transition-all duration-200 ease-out">
                 <img
                   src={BASE_URL + c.img}
                   alt=""
                   className="md:h-[369px] h-[300px]"
                 />
-                <div className="h-[145px] space-y-3">
+                <div className="h-[145px] space-y-3 px-[3%]">
                   <p className="text-secondRed font-montserrat font-medium text-[18px] md:text-[20px] w-[80%]">
                     {c.title}
                   </p>
@@ -63,7 +63,7 @@ const NewsPages = () => {
                   }}
                   title={"Читать дальше"}
                   class1={
-                    "mx-auto sm:mx-0 sm:mr-auto w-[182px] font-montserrat"
+                    "sm:mr-auto w-[182px] font-montserrat mx-[3%]"
                   }
                 />
               </div>
