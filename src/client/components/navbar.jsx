@@ -70,10 +70,11 @@ const Navbar = () => {
             )}
           </div>
           <div className="hidden tl:flex gap-x-[33px]">
-            <div 
-            role="button"
-            onClick={adress}
-            className="flex gap-x-[10px] items-center">
+            <div
+              role="button"
+              onClick={adress}
+              className="flex gap-x-[10px] items-center"
+            >
               <img
                 src="/images/location.png"
                 alt="location"
@@ -194,7 +195,11 @@ const Navbar = () => {
                 >
                   Выхлопные системы
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/catalizator"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Отключение катализатора
                 </Link>
                 <Link
@@ -306,7 +311,10 @@ const Navbar = () => {
                 >
                   Новости
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link 
+                to={"/articles"}
+                onClick={topFunction}
+                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Статьи
                 </Link>
               </div>

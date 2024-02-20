@@ -29,6 +29,10 @@ import {
   AdminStock,
   AdminWork,
 } from "../admin/pages";
+import CatalizatorPages from "../client/pages/CatalizatorPages";
+import AskPages from "../client/pages/AskPages";
+import ArticlesPages from "../client/pages/Articles";
+import AdminBaseCatalog from "../admin/pages/AdminBaseCatalog";
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +101,18 @@ export const router = createBrowserRouter([
         path: "stock/:id",
         element: <StockDetail />
       },
+      {
+        path: "catalizator",
+        element: <CatalizatorPages />
+      },
+      {
+        path: "ask",
+        element: <AskPages />
+      },
+      {
+        path: "articles",
+        element: <ArticlesPages />
+      },
       // Admin router
       {
         path: "admin-login",
@@ -137,6 +153,10 @@ export const router = createBrowserRouter([
       {
         path: "admin-stock",
         element: <AdminStock />
+      },
+      {
+        path: "admin-catalogs",
+        element: <AdminBaseCatalog />
       }
     ],
   },

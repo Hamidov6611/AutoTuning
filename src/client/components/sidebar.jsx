@@ -176,7 +176,9 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
                 >
                   Выхлопные системы
                 </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <div 
+                onClick={() => sendNext("/catalizator")}
+                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Отключение катализатора
                 </div>
                 <div

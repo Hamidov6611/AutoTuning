@@ -90,6 +90,32 @@ function Sidebar() {
                 <span className="ml-3">Примеры работ</span>
               </NavLink>
             </li>
+            {/* catalog */}
+            <li>
+              <NavLink
+                to={"/admin-catalogs"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Каталог</span>
+              </NavLink>
+            </li>
+            {/* brand */}
+            <li>
+              <NavLink
+                to={"/admin-brand"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
+                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                }
+              >
+                <span className="ml-3">Бренд</span>
+              </NavLink>
+            </li>
             {/* Category */}
             <li>
               <NavLink

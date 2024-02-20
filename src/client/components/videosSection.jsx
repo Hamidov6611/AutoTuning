@@ -17,7 +17,6 @@ const VideosSection = () => {
     getVideos();
   }, []);
 
-  console.log(videos);
   return (
     <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 sl:gap-y-10 mb-6 md:mb-20 px-[3%] sl:px-0">
       <p className="text-[28px] md:text-[40px] text-center text-mainBlack font-medium font-montserrat">
