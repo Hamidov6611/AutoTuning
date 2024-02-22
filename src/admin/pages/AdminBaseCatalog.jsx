@@ -87,7 +87,7 @@ const AdminBaseCatalog = () => {
                       <img
                         src={`${BASE_URL}${c?.img}`}
                         alt=""
-                        className="w-auto h-[80px] rounded-md"
+                        className="rounded-md w-[200px] h-[80px]"
                       />
                     </td>
                     <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
