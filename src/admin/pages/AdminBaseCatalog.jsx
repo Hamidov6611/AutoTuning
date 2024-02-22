@@ -3,9 +3,9 @@ import AdminLayout from "../components/layout/layout";
 import { IconButton, Pagination } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { BASE_URL, instance } from "../../api/axios";
-import AddNews from "../components/news/addNews";
-import EditNews from "../components/news/editNews";
-import RemoveNews from "../components/news/removeNews";
+import AddMainCatalog from "../components/main-catalog/addNews";
+import EditMainCatalog from "../components/main-catalog/editNews";
+import RemoveMainCatalog from "../components/main-catalog/removeNews";
 
 const AdminBaseCatalog = () => {
   const [pageId, setPageId] = useState(1);
@@ -67,9 +67,9 @@ const AdminBaseCatalog = () => {
                 </tr>
               </thead>
 
-              {isOpen && <AddNews setIsOpen={setIsOpen} getData={getData} />}
+              {isOpen && <AddMainCatalog setIsOpen={setIsOpen} getData={getData} />}
               {isRemove && (
-                <RemoveNews
+                <RemoveMainCatalog
                   setIsRemove={setIsRemove}
                   getData={getData}
                   id={itemId}
@@ -77,7 +77,7 @@ const AdminBaseCatalog = () => {
               )}
 
               {isEdit && (
-                <EditNews setIsOpen={setIsEdit} getData={getData} id={itemId} />
+                <EditMainCatalog setIsOpen={setIsEdit} getData={getData} id={itemId} />
               )}
 
               <tbody>
