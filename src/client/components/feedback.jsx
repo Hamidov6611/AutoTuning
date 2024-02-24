@@ -13,7 +13,7 @@ const Feedback = () => {
   const postFeedback = async (e) => {
     e.preventDefault()
     try {
-      await instance.post(`/feedback`, postData);
+      await instance.post(`/feedback/secret`, postData);
       toast.success("заявка была отложена");
     } catch (error) {
       console.log(error);

@@ -3,6 +3,8 @@ import { BASE_URL, instance } from "../../api/axios";
 
 const Collection = () => {
   const [catalog, setCatalog] = useState([]);
+  const [brand, setBrand] = useState([]);
+  const [id, setId] = useState(1);
 
   const getCatalog = async () => {
     try {
@@ -14,14 +16,27 @@ const Collection = () => {
     }
   };
 
+  const getBrand = async () => {
+    try {
+      const { data } = await instance.get(`/catalog/brand/${id}`);
+      setBrand(data?.brand);
+      console.log(data?.brand);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCatalog();
   }, []);
+  useEffect(() => {
+    getBrand()
+  }, [id])
+  
   const toggleCard = (item) => {
-    // changeService(item?.id);
-    // setCard(item);
+    setId(item?.id)
     setCatalog((prevCards) =>
-      prevCards.map((card) =>
+      prevCards?.map((card) =>
         card?.id === item?.id
           ? { ...card, visible: !card.visible }
           : { ...card, visible: false }
@@ -29,41 +44,44 @@ const Collection = () => {
     );
   };
   return (
-    <div className="max-w-[1440px] mx-auto my-5 ol:my-10 px-[3%] tl:px-0">
-      <div className="w-[98%] st:w-[1280px] mx-auto flex flex-col gap-y-[20px] tl:gap-y-[80px]">
-        <div className="w-full flex border border-[#FF0000] transition-all ease-linear duration-500 h-[100px] rounded-[10px] overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-0 justify-between  items-center">
-          {catalog?.map((c, idx) => (
-            <div
-              className={`h-full w-[213px] cursor-pointer sm:w-auto flex items-center px-[20px] transition-all ease-in-out duration-500 ${
-                c?.visible && "bg-[#FF0000]"
-              }`}
-            >
-              <img
-                onClick={() => toggleCard(c)}
-                src={BASE_URL + c?.img}
-                alt="c"
-                key={idx}
-                className={`w-[213px] sm:w-auto ${
-                  idx == 4 ? "h-[84px]" : "h-[57px]"
+    <div className="max-w-[1440px] space-y-6 mx-auto my-5 ol:my-10 px-[3%] tl:px-0">
+      <div className="w-[98%] st:w-[1280px] mx-auto flex flex-col gap-y-[20px] tl:gap-y-[80px] overflow-x-auto">
+        <div className="overflow-x-auto w-[1280px]">
+          <div className="w-full flex border border-[#FF0000] transition-all ease-linear duration-500 h-[100px] rounded-[10px] overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-0 justify-between  items-center">
+            {catalog?.map((c, idx) => (
+              <div
+                className={`h-full w-[213px] cursor-pointer sm:w-auto flex items-center px-[20px] transition-all ease-in-out duration-500 ${
+                  c?.visible && "bg-[#FF0000]"
                 }`}
-              />
-            </div>
-          ))}
+              >
+                <img
+                  onClick={() => toggleCard(c)}
+                  src={BASE_URL + c?.img}
+                  alt="c"
+                  key={idx}
+                  className={`w-[213px] sm:w-auto ${
+                    idx == 4 ? "h-[84px]" : "h-[57px]"
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-4 items-center w-full">
-          {col2?.map((c, idx) => (
-            <div className={`shadow-xl border py-5 px-2 rounded-lg  w-[100px] h-[100px] flex items-center justify-center`}>
-              <img src={c} alt={c} key={idx} />
+      </div>
+      {/* section 2 */}
+      <div className="overflow-x-auto sm:w-[1280px] mx-auto">
+        <div className="flex flex-wrap gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-4 items-center w-[1280px]">
+          {brand?.map((c, idx) => (
+            <div
+              className={`shadow-example flex-col border py-5 px-2 gap-y-2 rounded-[8px]  w-[82.2px] h-[100px] flex items-center justify-center`}
+            >
+              <img src={BASE_URL + c?.img} alt={c} key={idx} />
+              <p className="m-0 p-0 text-[10px]">{c?.title}</p>
             </div>
           ))}
-        </div>
-        <div className="flex overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-4 items-center w-full">
-          {col3?.map((c, idx) => (
-            <div className={`shadow-xl border py-5 px-2 rounded-lg w-[100px] h-[100px] flex items-center justify-center`}>
-              <img src={c} alt={c} key={idx} className={``} />
-
-            </div>
-          ))}
+          {brand?.length < 1 && (
+            <p className="text-center w-full mt-4 font-medium font-montserrat text-mainRed">Этот бренд не найден</p>
+          )}
         </div>
       </div>
     </div>
@@ -71,37 +89,3 @@ const Collection = () => {
 };
 
 export default Collection;
-
-const col1 = [
-  "/images/col1.png",
-  "/images/col2.png",
-  "/images/col3.png",
-  "/images/col4.png",
-  "/images/col5.png",
-  "/images/col6.png",
-];
-
-const col2 = [
-  "/images/ol1.png",
-  "/images/ol2.png",
-  "/images/ol3.png",
-  "/images/ol4.png",
-  "/images/ol5.png",
-  "/images/ol6.png",
-  "/images/ol7.png",
-  "/images/ol8.png",
-  "/images/ol9.png",
-  "/images/ol10.png",
-  "/images/ol11.png",
-];
-
-const col3 = [
-  "/images/rew1.png",
-  "/images/rew2.png",
-  "/images/rew3.png",
-  "/images/rew4.png",
-  "/images/rew5.png",
-  "/images/rew6.png",
-  "/images/rew7.png",
-  "/images/rew8.png",
-];

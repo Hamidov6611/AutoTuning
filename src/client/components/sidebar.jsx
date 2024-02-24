@@ -99,7 +99,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
                 >
                   Каталог
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link to={'/comment'} onClick={() => window.scrollTo({top: 0})} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Описание
                 </Link>
                 <div

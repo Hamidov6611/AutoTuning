@@ -40,4 +40,20 @@
         <loc>http://www.k222la6a.beget.tech/stock</loc>
         <priority>0.80</priority>
     </url>
+    <url>
+        <loc>http://www.k222la6a.beget.tech/catalizator</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://www.k222la6a.beget.tech/ask</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://www.k222la6a.beget.tech/articles</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://www.k222la6a.beget.tech/comment</loc>
+        <priority>0.80</priority>
+    </url>
 </urlset>

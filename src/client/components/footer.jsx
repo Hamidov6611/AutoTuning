@@ -371,7 +371,7 @@ const Footer = () => {
           <Link
             onMouseEnter={() => hoverHandler("menu4")}
             onMouseLeave={() => closeHandler("menu4")}
-            className="font-normal text-base text-mainBlack font-montserrat"
+            className="font-normal text-base text-mainBlack font-montserrat relative"
           >
             Блог
             {isMenu.menu4 && (
@@ -466,9 +466,9 @@ const Footer = () => {
                 />
               </svg>
             </div>
-            <p className="text-sm font-montserrat font-normal md:text-base text-black">
+            <Link to={`mailto:X-tuners@yandex.ru`}  className="text-sm font-montserrat cursor-pointer font-normal md:text-base text-black">
               Почта
-            </p>
+            </Link>
           </div>
           <div className="flex items-center gap-x-[40px]">
             <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">

@@ -133,7 +133,7 @@ const Navbar = () => {
                 >
                   Каталог
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link to={"/comment"} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Описание
                 </Link>
                 <div

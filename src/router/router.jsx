@@ -33,6 +33,8 @@ import CatalizatorPages from "../client/pages/CatalizatorPages";
 import AskPages from "../client/pages/AskPages";
 import ArticlesPages from "../client/pages/Articles";
 import AdminBaseCatalog from "../admin/pages/AdminBaseCatalog";
+import AdminBrand from "../admin/pages/AdminBrand";
+import CommentPages from "../client/pages/CommentPages";
 
 export const router = createBrowserRouter([
   {
@@ -99,19 +101,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "stock/:id",
-        element: <StockDetail />
+        element: <StockDetail />,
       },
       {
         path: "catalizator",
-        element: <CatalizatorPages />
+        element: <CatalizatorPages />,
       },
       {
         path: "ask",
-        element: <AskPages />
+        element: <AskPages />,
       },
       {
         path: "articles",
-        element: <ArticlesPages />
+        element: <ArticlesPages />,
+      },
+      {
+        path: "comment",
+        element: <CommentPages />,
       },
       // Admin router
       {
@@ -152,12 +158,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "admin-stock",
-        element: <AdminStock />
+        element: <AdminStock />,
       },
       {
         path: "admin-catalogs",
-        element: <AdminBaseCatalog />
-      }
+        element: <AdminBaseCatalog />,
+      },
+      {
+        path: "admin-brand",
+        element: <AdminBrand />,
+      },
     ],
   },
 ]);
