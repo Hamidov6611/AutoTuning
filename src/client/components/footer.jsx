@@ -72,7 +72,11 @@ const Footer = () => {
                   >
                     Каталог
                   </Link>
-                  <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                  <Link
+                    to={`/comment`}
+                    onClick={() => window.scrollTo({ top: 0 })}
+                    className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                  >
                     Описание
                   </Link>
                   <div
@@ -275,7 +279,10 @@ const Footer = () => {
                 >
                   Каталог
                 </Link>
-                <Link className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link 
+                to={`/comment`}
+                onClick={() => window.scrollTo({ top: 0 })}
+                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Описание
                 </Link>
                 <div
@@ -339,7 +346,7 @@ const Footer = () => {
           {/* Магазин тюнинга */}
           <Link
             to={"/service"}
-            onClick={() => window.scrollTo({top: 0})}
+            onClick={() => window.scrollTo({ top: 0 })}
             onMouseEnter={() => hoverHandler("menu3")}
             onMouseLeave={() => closeHandler("menu3")}
             className="font-normal text-base text-mainBlack font-montserrat relative"
@@ -350,7 +357,7 @@ const Footer = () => {
                 {category?.map((c, idx) => (
                   <Link
                     to={`/service?id=${c?.id}`}
-                    onClick={() => window.scrollTo({top: 0})}
+                    onClick={() => window.scrollTo({ top: 0 })}
                     key={idx}
                     className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
                   >
@@ -363,7 +370,7 @@ const Footer = () => {
           {/* Акции */}
           <Link
             to={`/stock`}
-            onClick={() => window.scrollTo({top: 0})}
+            onClick={() => window.scrollTo({ top: 0 })}
             className="font-normal text-base text-mainBlack font-montserrat"
           >
             Акции
@@ -375,27 +382,26 @@ const Footer = () => {
           >
             Блог
             {isMenu.menu4 && (
-              <div
-                className="absolute left-0 top-6 z-[100] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]"
-              >
+              <div className="absolute left-0 top-6 z-[100] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[284px]">
                 <Link
                   to={`/works`}
-                  onClick={() => window.scrollTo({top: 0})}
+                  onClick={() => window.scrollTo({ top: 0 })}
                   className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
                 >
                   Примеры работ
                 </Link>
                 <Link
                   to={"/news"}
-                  onClick={() => window.scrollTo({top: 0})}
+                  onClick={() => window.scrollTo({ top: 0 })}
                   className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
                 >
                   Новости
                 </Link>
-                <Link 
-                to={"/articles"}
-                onClick={() => window.scrollTo({top: 0})}
-                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/articles"}
+                  onClick={() => window.scrollTo({ top: 0 })}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Статьи
                 </Link>
               </div>
@@ -403,7 +409,7 @@ const Footer = () => {
           </Link>
           <Link
             to={`/ask`}
-            onClick={() => window.scrollTo({top: 0})}
+            onClick={() => window.scrollTo({ top: 0 })}
             className="font-normal text-base text-mainBlack font-montserrat"
           >
             Вопрос-ответ
@@ -466,7 +472,10 @@ const Footer = () => {
                 />
               </svg>
             </div>
-            <Link to={`mailto:X-tuners@yandex.ru`}  className="text-sm font-montserrat cursor-pointer font-normal md:text-base text-black">
+            <Link
+              to={`mailto:X-tuners@yandex.ru`}
+              className="text-sm font-montserrat cursor-pointer font-normal md:text-base text-black"
+            >
               Почта
             </Link>
           </div>

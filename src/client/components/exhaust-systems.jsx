@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import the CSS
+import { useNavigate } from "react-router-dom";
+import MyButton from "./ui/button/button";
 
 const ExhaustSystems = () => {
+  const navigate = useNavigate()
+
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
@@ -64,6 +68,10 @@ const ExhaustSystems = () => {
           <p className="text-sm md:text-base font-normal text-mainBlack">
             Можем изготовить абсолютно на любое транспортное средство
           </p>
+          <MyButton callback={() => {
+          navigate("/comment")
+          window.scrollTo({top: 0})
+        }} title={"Подробнее"} class1={`w-[280px] sl:w-[305px] rounded-[5px] text-base font-montserrat h-[50px] text-center tl:h-[75px] md:mt-6`}/>
         </div>
         <div className="sl:w-1/2 md:h-[428px] pl-[4%] ">
           <img src="/images/system.png" alt="" className="w-full h-full" />
