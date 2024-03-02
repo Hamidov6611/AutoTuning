@@ -48,19 +48,19 @@ const AdminStock = () => {
           </IconButton>
         </div>
 
-        <div class="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
-          <div class="max-w-full overflow-x-auto">
-            <table class="w-full table-auto">
+        <div className="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
+          <div className="max-w-full overflow-x-auto">
+            <table className="w-full table-auto">
               <thead className="bg-[#313d4a]">
-                <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                <tr className="bg-gray-2 text-left dark:bg-meta-4">
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Изображение
                   </th>
-                  <th class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Заголовок
                   </th>
 
-                  <th class="py-4 px-4 font-medium text-black dark:text-white">
+                  <th className="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
                   </th>
                 </tr>
@@ -82,27 +82,27 @@ const AdminStock = () => {
               <tbody>
                 {news?.map((c, index) => (
                   <tr key={index}>
-                    <td class="border-b border-[#eee] py-5 pl-2 dark:border-strokedark xl:pl-11">
+                    <td className="border-b border-[#eee] py-5 pl-2 dark:border-strokedark xl:pl-11">
                       <img
                         src={`${BASE_URL}${c?.img}`}
                         alt=""
                         className="w-[120px] h-[120px] rounded-md object-cover"
                       />
                     </td>
-                    <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 class="font-medium text-black dark:text-white line-clamp-1">
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
                         {c?.title}
                       </h5>
                     </td>
 
-                    <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <div class="flex items-center justify-center sm:justify-start space-x-3.5">
+                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <div className="flex items-center justify-center sm:justify-start space-x-3.5">
                         <button
                           onClick={() => handleRemove(c?.id)}
-                          class="hover:text-primary"
+                          className="hover:text-primary"
                         >
                           <svg
-                            class="fill-red-600"
+                            className="fill-red-600"
                             width="18"
                             height="18"
                             viewBox="0 0 18 18"
@@ -129,7 +129,7 @@ const AdminStock = () => {
                         </button>
                         <button
                           onClick={() => handleEdit(c?.id)}
-                          class="hover:text-primary fill-green-600"
+                          className="hover:text-primary fill-green-600"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

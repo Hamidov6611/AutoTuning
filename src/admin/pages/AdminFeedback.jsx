@@ -50,20 +50,20 @@ const AdminFeedback = () => {
           </IconButton>
         </div>
 
-        <div class="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
-          <div class="max-w-full overflow-x-auto">
-            <table class="w-full table-auto">
+        <div className="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
+          <div className="max-w-full overflow-x-auto">
+            <table className="w-full table-auto">
               <thead className="bg-[#313d4a]">
-                <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th class="min-w-[200px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                <tr className="bg-gray-2 text-left dark:bg-meta-4">
+                  <th className="min-w-[200px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     От кого
                   </th>
 
-                  <th class="min-w-[400px] sm:max-w-[400px] capitalize py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                  <th className="min-w-[400px] sm:max-w-[400px] capitalize py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Комментарий
                   </th>
 
-                  <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
+                  <th className="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Actions
                   </th>
                 </tr>
@@ -82,29 +82,29 @@ const AdminFeedback = () => {
               <tbody>
                 {feedback?.map((c, index) => (
                   <tr key={index}>
-                    <td class="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 class="font-medium text-black dark:text-white line-clamp-1">
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
                         {c?.name}
                       </h5>
-                      <h5 class="font-medium text-black dark:text-white line-clamp-1">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
                         {c?.phone}
                       </h5>
                     </td>
 
-                    <td class="border-b w-[400px] sm:max-w-[400px] border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 class="font-medium text-black dark:text-white ">
+                    <td className="border-b w-[400px] sm:max-w-[400px] border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white ">
                         {c?.comment}
                       </h5>
                     </td>
 
-                    <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <div class="flex items-center justify-center sm:justify-start ml-4">
+                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <div className="flex items-center justify-center sm:justify-start ml-4">
                         <button
                           onClick={() => handleRemove(c?.id)}
-                          class="hover:text-primary"
+                          className="hover:text-primary"
                         >
                           <svg
-                            class="fill-red-600"
+                            className="fill-red-600"
                             width="18"
                             height="18"
                             viewBox="0 0 18 18"

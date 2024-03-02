@@ -24,7 +24,7 @@ const ExhaustSystems = () => {
             Выхлопные системы
           </p>
           <p className="text-sm md:text-base text-mainBlack font-montserrat font-normal">
-            Изготавливаем дунпайпы и выхлопные системы из нержавеющей стали{" "}
+            Изготавливаем даунпайпы и выхлопные системы из нержавеющей стали{" "}
             <br className="md:flex hidden" /> aisi 304 и 321
           </p>
           <ul className="space-y-3 text-sm md:text-base font-normal text-mainBlack">
@@ -62,7 +62,7 @@ const ExhaustSystems = () => {
               >
                 <path d="M0.912 2.272V0.944H5.216V2.272H0.912Z" fill="black" />
               </svg>
-              Расчитаны для оптимального потока
+              Рассчитаны для оптимального потока
             </li>
           </ul>
           <p className="text-sm md:text-base font-normal text-mainBlack">

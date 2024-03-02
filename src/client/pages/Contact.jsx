@@ -4,6 +4,7 @@ import { Layout } from "../components";
 import MyButton from "../components/ui/button/button";
 import FeedbackModal from "../components/feedback-modal";
 import { BASE_LINK } from "../../api/axios";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [isModal, setIsModal] = useState(false);
@@ -15,14 +16,17 @@ const Contact = () => {
       link={BASE_LINK + "contact"}
     >
       <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 py-[30px] ol:gap-y-[60px]">
-        <Title>Контакты</Title>
+      
         <div className="flex lg:flex-row flex-col min-h-[541px] w-full shadow-xl hover:shadow-md hover:shadow-[#FF0000] p-[30px]">
-          {/* section 1 */}
+        
           <div className="lg:w-1/3 h-full">
             <Title>Контакты</Title>
 
             <div className="mt-[56px] flex flex-col gap-y-[20px] ">
-              <div className="flex gap-x-[11px] items-center">
+              <Link
+                to={"tel:+79268103277"}
+                className="flex gap-x-[11px] items-center"
+              >
                 <svg
                   width="18"
                   height="18"
@@ -36,26 +40,9 @@ const Contact = () => {
                   />
                 </svg>
                 <p className="font-montserrat text-[20px] font-normal text-mainBlack">
-                  +7 (___) ___-__-__
+                  +7 (926) 810 32 77
                 </p>
-              </div>
-              <div className="flex gap-x-[11px] items-center">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.26645 7.43645L3.00972 7.69317L3.17437 8.01675C4.66275 10.9418 7.05952 13.3276 9.982 14.825L10.3061 14.991L10.5636 14.7336L12.7636 12.5336C12.899 12.3981 13.099 12.3551 13.2678 12.413L13.2678 12.413L13.2732 12.4148C14.4436 12.8014 15.7066 13.01 17 13.01C17.2739 13.01 17.5 13.2361 17.5 13.51V17C17.5 17.2739 17.2739 17.5 17 17.5C7.88614 17.5 0.5 10.1139 0.5 1C0.5 0.726142 0.726142 0.5 1 0.5H4.5C4.77386 0.5 5 0.726142 5 1C5 2.30213 5.20815 3.55368 5.5939 4.7228C5.6492 4.90217 5.6082 5.09469 5.46645 5.23645L3.26645 7.43645Z"
-                    stroke="#FF0000"
-                  />
-                </svg>
-                <p className="font-montserrat text-[20px] font-normal text-mainBlack">
-                  +7 (___) ___-__-__
-                </p>
-              </div>
+              </Link>
               <div className="flex gap-x-[11px] items-center">
                 <svg
                   width="18"
@@ -93,7 +80,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          {/* section 2 */}
+         
           <div className="lg:w-2/3 h-full">
             <img
               src="/images/image 19.png"
@@ -106,7 +93,7 @@ const Contact = () => {
 
         <div className="w-full min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl px-[38px] gap-x-[36px]">
           <div className="lg:w-[80%]">
-            <p className="text-base text-mainBlack font-medium font-montserrat">
+            <p className="text-base text-mainBlack font-medium font-montserrat text-justify">
               Мы дорожим своей репутацией и даем гарантию на все выполняемые
               виды работ. При возникновении гарантийного случая или иного
               вопроса касательно оказанных нами услуг мы максимально оперативно

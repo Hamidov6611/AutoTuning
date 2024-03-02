@@ -43,7 +43,7 @@ const MobileWork = ({ work }) => {
                 navigate(`/work/${c?.id}`);
                 window.scrollTo({ top: 0 });
               }}
-              title={"Смотреть больше"}
+              title={"Читать далее"}
               class1={`mx-auto sm:mx-0 sm:mr-auto w-[270px] md:w-[305px]`}
             />
           </div>

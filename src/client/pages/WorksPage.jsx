@@ -94,7 +94,7 @@ const WorksPages = () => {
                     {c.title}
                   </p>
                   <p
-                    className="line-clamp-[7]"
+                    className="line-clamp-[7] text-justify"
                     dangerouslySetInnerHTML={{
                       __html: c?.description,
                     }}

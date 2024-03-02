@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { instance } from "../../api/axios";
+import { useGetCategoryQuery } from "../../redux/api";
+import Loader from "./loader/loader";
 
 const Footer = () => {
   const [isMenu, setIsMenu] = useState({
@@ -10,7 +11,7 @@ const Footer = () => {
     menu4: false,
   });
   const navigate = useNavigate();
-  const [category, setCategory] = useState([]);
+  const { data: category = [], isLoading } = useGetCategoryQuery();
 
   const hoverHandler = (menu) => {
     setIsMenu({ ...isMenu, [menu]: true });
@@ -19,15 +20,15 @@ const Footer = () => {
     setIsMenu({ ...isMenu, [menu]: false });
   };
   const topFunction = () => window.scrollTo({ top: 0 });
+  const adress = () => {
+    let address = "Киевская ул., д. 14, стр. 1, этаж 3";
+    let encodedAddress = encodeURIComponent(address);
+    let yandexMapsUrl = "https://yandex.ru/maps/?text=" + encodedAddress;
 
-  useEffect(() => {
-    async function getCategory() {
-      const { data } = await instance.get(`category?page=1&limit=4`);
-      setCategory(data?.data);
-    }
-
-    getCategory();
-  }, []);
+    // Foydalanuvchini yangi oynada Yandex Xaritaga yuborish
+    window.open(yandexMapsUrl, "_blank");
+  };
+  if (isLoading) return <Loader />;
   return (
     <div
       className="w-full st:max-w-[1440px] min-h-[408px] mx-auto pb-[40px] sm:pb-0 px-[3%] tl:px-0"
@@ -135,7 +136,7 @@ const Footer = () => {
             <p className="font-medium text-[20px] sm:text-[24px] font-montserrat text-mainBlack">
               Наши контакты
             </p>
-            <div className="flex items-center gap-x-[20px]">
+            <div onClick={adress} className="flex items-center gap-x-[20px]">
               <div className="flex items-center justify-center z-[1]  rounded-full">
                 <svg
                   width="14"
@@ -151,10 +152,13 @@ const Footer = () => {
                 </svg>
               </div>
               <p className="text-sm font-montserrat font-normal md:text-base text-black">
-                Номер телефона
+                Адрес
               </p>
             </div>
-            <div className="flex items-center gap-x-[20px]">
+            <Link
+              to={"tel:+79268103277"}
+              className="flex items-center gap-x-[20px]"
+            >
               <div className="flex items-center justify-center z-[1]  rounded-full">
                 <svg
                   width="18"
@@ -170,9 +174,9 @@ const Footer = () => {
                 </svg>
               </div>
               <p className="text-sm font-montserrat font-normal md:text-base text-black">
-                Адрес
+                Номер телефона
               </p>
-            </div>
+            </Link>
             <div className="flex items-center gap-x-[20px]">
               <div className="flex items-center justify-center z-[1]  rounded-full">
                 <svg
@@ -279,10 +283,11 @@ const Footer = () => {
                 >
                   Каталог
                 </Link>
-                <Link 
-                to={`/comment`}
-                onClick={() => window.scrollTo({ top: 0 })}
-                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={`/comment`}
+                  onClick={() => window.scrollTo({ top: 0 })}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Описание
                 </Link>
                 <div
@@ -419,7 +424,7 @@ const Footer = () => {
           <p className="font-medium text-[24px] font-montserrat text-mainBlack">
             Наши контакты
           </p>
-          <div className="flex items-center gap-x-[20px]">
+          <div onClick={adress} className="flex items-center gap-x-[20px]">
             <div className="flex items-center justify-center z-[1]  rounded-full">
               <svg
                 width="14"
@@ -435,10 +440,10 @@ const Footer = () => {
               </svg>
             </div>
             <p className="text-sm font-montserrat font-normal md:text-base text-black">
-              Номер телефона
+            Адрес
             </p>
           </div>
-          <div className="flex items-center gap-x-[20px]">
+          <Link to={"tel:+79268103277"} className="flex items-center gap-x-[20px]">
             <div className="flex items-center justify-center z-[1]  rounded-full">
               <svg
                 width="18"
@@ -454,9 +459,9 @@ const Footer = () => {
               </svg>
             </div>
             <p className="text-sm font-montserrat font-normal md:text-base text-black">
-              Адрес
+              Номер телефона
             </p>
-          </div>
+          </Link>
           <div className="flex items-center gap-x-[20px]">
             <div className="flex items-center justify-center z-[1]  rounded-full">
               <svg

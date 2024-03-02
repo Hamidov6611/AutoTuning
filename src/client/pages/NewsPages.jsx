@@ -50,7 +50,7 @@ const NewsPages = () => {
                     {c.title}
                   </p>
                   <p
-                    className="line-clamp-3 pr-3"
+                    className="line-clamp-3 pr-3 text-justify"
                     dangerouslySetInnerHTML={{
                       __html: c?.description,
                     }}

@@ -5,6 +5,8 @@ import "./ui/menu/menu.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Close } from "@mui/icons-material";
 import { instance } from "../../api/axios";
+import { useGetCategoryQuery } from "../../redux/api.js";
+import Loader from "./loader/loader.jsx";
 
 const Navbar = () => {
   const [isHover, setIsHover] = useState({
@@ -13,8 +15,8 @@ const Navbar = () => {
     menu3: false,
     menu4: false,
   });
+  const { data: category = [], isLoading } = useGetCategoryQuery();
 
-  const [category, setCategory] = useState([]);
   const [isMenu, setIsMenu] = useState(false);
   const navigate = useNavigate();
   const hoverHandler = (menu) => {
@@ -28,15 +30,6 @@ const Navbar = () => {
     window.scrollTo({ top: 0 });
   };
 
-  useEffect(() => {
-    async function getCategory() {
-      const { data } = await instance.get(`category?page=1&limit=4`);
-      setCategory(data?.data);
-    }
-
-    getCategory();
-  }, []);
-
   const adress = () => {
     let address = "Киевская ул., д. 14, стр. 1, этаж 3";
     let encodedAddress = encodeURIComponent(address);
@@ -46,6 +39,7 @@ const Navbar = () => {
     window.open(yandexMapsUrl, "_blank");
   };
 
+  if (isLoading) return <Loader />;
   return (
     <div className="w-full h-[100px] tl:h-[232px] mx-auto relative">
       <div className="st:max-w-[1440px] mx-auto h-full  flex flex-col">
@@ -84,7 +78,7 @@ const Navbar = () => {
                 Адрес
               </p>
             </div>
-            <div className="flex gap-x-[10px] items-center">
+            <Link to={"tel:+79268103277"} className="flex gap-x-[10px] items-center">
               <img
                 src="/images/phone.png"
                 alt="phone"
@@ -93,7 +87,7 @@ const Navbar = () => {
               <p className="text-mainBlack text-base font-montserrat font-normal">
                 Номер телефона
               </p>
-            </div>
+            </Link>
           </div>
         </div>
         {/* laptop */}
@@ -133,7 +127,11 @@ const Navbar = () => {
                 >
                   Каталог
                 </Link>
-                <Link to={"/comment"} onClick={topFunction} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/comment"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Описание
                 </Link>
                 <div
@@ -152,7 +150,7 @@ const Navbar = () => {
                   }}
                   className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
                 >
-                  Фаил сервис
+                  Файл сервис
                 </div>
               </div>
             )}
@@ -242,7 +240,7 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHover({ ...isHover, menu3: true })}
                 className="absolute left-0 top-6 z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-[300px]"
               >
-                {category?.map((c, idx) => (
+                {category?.data?.map((c, idx) => (
                   <Link
                     to={`/service?id=${c?.id}`}
                     onClick={topFunction}
@@ -285,12 +283,7 @@ const Navbar = () => {
             // to={"/blog"}
             onMouseEnter={() => hoverHandler("menu4")}
             onMouseLeave={() => closeHandler("menu4")}
-            className={
-              ({ isActive }) =>
-                // !isActive
-                "text-mainBlack flex items-center gap-x-[10px] relative"
-              // : "text-mainRed flex items-center gap-x-[10px]"
-            }
+            className={"text-mainBlack flex items-center gap-x-[10px] relative"}
           >
             {isHover.menu4 && (
               <div
@@ -311,10 +304,11 @@ const Navbar = () => {
                 >
                   Новости
                 </Link>
-                <Link 
-                to={"/articles"}
-                onClick={topFunction}
-                className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <Link
+                  to={"/articles"}
+                  onClick={topFunction}
+                  className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                >
                   Статьи
                 </Link>
               </div>

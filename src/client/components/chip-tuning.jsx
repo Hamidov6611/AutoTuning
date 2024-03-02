@@ -18,7 +18,7 @@ const   ChipTuning = () => {
           ЧИП-ТЮНИНГ
         </p>
         <p className="text-sm md:text-base font-normal font-montserrat text-mainBlack">
-          Чип-тюнинг - изменения данных зыписанных в электронном блоке <br className="hidden md:block"/>
+          Чип-тюнинг - изменения данных записанных в электронном блоке <br className="hidden md:block"/>
           управления
         </p>
         <p className="text-sm md:text-base font-normal font-montserrat text-mainBlack">

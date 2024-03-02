@@ -17,11 +17,11 @@ const About = () => {
         <Title>Обучение чип-тюнингу</Title>
 
         {/* Section 1 */}
-        <div className="flex lg:flex-row flex-col justify-between lg:items-start gap-x-4 gap-y-4">
-          <div className="lg:w-[50%] w-full flex flex-col gap-y-3 lg:gap-y-8 text-base font-medium font-montserrat text-mainBlack">
+        <div className="flex lg:flex-row flex-col justify-between lg:items-start gap-x-4 md:gap-x-12 gap-y-4">
+          <div className="lg:w-[50%] text-justify w-full flex flex-col gap-y-3 lg:gap-y-8 text-base font-medium font-montserrat text-mainBlack">
             <p>
-              Проводим бесплатное обучение для будущих дилеров и партнеров{" "}
-              <br className="lg:flex hidden" /> нашей компании.
+              Проводим бесплатное обучение для будущих дилеров и партнеров нашей
+              компании.
             </p>
             <p>Рзберем:</p>
             <p>
@@ -30,12 +30,15 @@ const About = () => {
               подберем максимально устраиваемое вас оборудование.
             </p>
             <p>
-              2. Варианты чтение и записи ЭБУ. <br /> - Чтение / запись через
-              диагностический разъем автомобиля - OBD2 <br /> - Чтение / запись через
-              прямое подключение к блоку - BENCH <br /> - Чтение / запись через со
-              вскртытием блока - BOOT
+              2. Варианты чтения и записи ЭБУ. <br /> - Чтение / запись через
+              диагностический разъем автомобиля - OBD2 <br /> - Чтение / запись
+              через прямое подключение к блоку - BENCH <br /> - Чтение / запись
+              через со вскрытием блока - BOOT
             </p>
-            <p>3. Какие области можно вычитать из ЭБУ. Что нужно для внесения изменений в программу, и что нужно для клонирования ЭБУ.</p>
+            <p>
+              3. Какие области можно вычитать из ЭБУ. Что нужно для внесения
+              изменений в программу, и для клонирования ЭБУ.
+            </p>
           </div>
           <div className="lg:w-[50%] w-full">
             <img
@@ -48,7 +51,7 @@ const About = () => {
 
         {/* Section 2 */}
 
-        <Feedback2 />
+        <Feedback2 text={"на обучение"} />
       </div>
     </Layout>
   );

@@ -6,6 +6,7 @@ import { BASE_URL, instance } from "../../api/axios";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Service = () => {
   const [data, setData] = useState([]);
@@ -34,19 +35,18 @@ const Service = () => {
   };
 
   useEffect(() => {
-    getCategory() 
-  },[])
+    getCategory();
+  }, []);
 
   useEffect(() => {
-    
     categoryId && changeService(parseInt(categoryId));
 
     async function getCategoryById() {
-      const {data} = await instance.get(`/category/${categoryId}`)
-      setCard(data)
+      const { data } = await instance.get(`/category/${categoryId}`);
+      setCard(data);
     }
 
-    categoryId && getCategoryById()
+    categoryId && getCategoryById();
   }, [categoryId]);
   const toggleCard = (item) => {
     changeService(item?.id);
@@ -62,10 +62,12 @@ const Service = () => {
   const changeService = async (id) => {
     setIsLoading(true);
     try {
-      const { data } = await instance.get(`/service/find/?id=${categoryId ? categoryId : id}`);
+      const { data } = await instance.get(
+        `/service/find/?id=${categoryId ? categoryId : id}`
+      );
       setData(data);
       setIsLoading(false);
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +97,6 @@ const Service = () => {
         <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 sm:py-[30px] ol:gap-y-[60px]">
           <div className="w-full flex flex-row gap-y-4 justify-between items-center">
             <Title>Сервис</Title>
-            {/* Service section */}
             <div className="hidden lg:flex items-center gap-x-[66px]">
               {category?.map((c, idx) => (
                 <button
@@ -200,38 +201,11 @@ const Service = () => {
                 className="font-montserrat font-normal text-base text-white flex gap-x-3 h-[67px] bg-[#9B1616] items-center justify-center md:w-[403px]"
               >
                 Смотреть больше
-                <svg
-                  width="30"
-                  height="23"
-                  viewBox="0 0 30 23"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M28.5 11.5L18.375 1.5M28.5 11.5L18.375 21.5M28.5 11.5L10.7812 11.5M1.5 11.5L5.71875 11.5"
-                    stroke="white"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <FaArrowRight />
               </button>
             </div>
           )}
 
-          {/* <div className="flex w-full justify-end">
-            <Pagination
-              count={
-                data?.count % 10 != 0
-                  ? Math.floor(data?.count / 10) + 1
-                  : Math.floor(data?.count / 10)
-              }
-              onChange={(e, value) => setPageId(value)}
-              onClick={() => window.scrollTo({ top: 0 })}
-              variant="outlined"
-              shape="rounded"
-            />
-          </div> */}
           <Feedback />
         </div>
       )}

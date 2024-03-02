@@ -120,7 +120,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
                   }}
                   className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
                 >
-                  Фаил сервис
+                  Файл сервис
                 </div>
               </div>
             )}
@@ -236,7 +236,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
             {isHover.menu3 && (
               <div className=" z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-full">
                 <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Выхлопные системы <br />( даунпайпы и спорт выхлопы )
+                  Выхлопные системы <br />(даунпайпы и спорт выхлопы)
                 </div>
                 <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Винил
@@ -322,7 +322,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
           </div>
 
           {/* nav 7 */}
-          <div>
+          <div onClick={() => sendNext("/ask", true)}>
             <p>Вопрос-ответ</p>
           </div>
 

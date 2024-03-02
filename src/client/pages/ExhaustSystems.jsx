@@ -42,9 +42,9 @@ const ExhaustSystems = () => {
           />
         </div>
 
-        <p className="text-sm sm:text-base font-montserrat text-black font-normal">
+        <p className="text-sm sm:text-base font-montserrat text-justify text-black font-normal">
           Изготавливаем даунпайпы и выхлопные системы из нержавеющей стали aisi
-          304 и 321. Можем <br className="sm:flex hidden" /> изготовить
+          304 и 321. Можем изготовить
           абсолютно на любое транспортное средство.
         </p>
         <p className="text-sm sm:text-base font-montserrat text-black font-normal">
@@ -62,9 +62,9 @@ const ExhaustSystems = () => {
           <li>Произвести тюнинг выхлопной системы</li>
           <li> Произвести ремонт выхлопной системы</li>
         </ul>
-        <p className="text-sm sm:text-base font-montserrat text-black font-normal list-disc">
+        <p className="text-sm sm:text-base font-montserrat text-black font-normal list-disc text-justify">
           В данный момент у нас есть даунпайпы практически на все BMW с моторами
-          N47, B47, M57, N57, B57, <br className="sm:flex hidden" />
+          N47, B47, M57, N57, B57,
           N20, B48, B58, N63, S63.
         </p>
 

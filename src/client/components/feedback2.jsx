@@ -3,7 +3,7 @@ import MyButton from "./ui/button/button";
 import { instance } from "../../api/axios";
 import toast from "react-hot-toast";
 
-const Feedback2 = () => {
+const Feedback2 = ({text}) => {
   const [postData, setPostData] = useState({ name: "", phone: "", date: null });
   const createFeedback = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const Feedback2 = () => {
   return (
     <form onSubmit={createFeedback} className="min-h-[455px] border border-[#FF0000] w-full flex flex-col gap-y-4 lg:gap-y-7 lg:py-[55px] px-4 py-4 lg:px-[161px]">
       <p className="font-normal text-lg lg:text-[32px] font-montserrat">
-        Отправить заявку на обучение
+        Отправить заявку {text}
       </p>
       <p className="font-montserrat font-medium text-base text-mainBlack/40">
         Перезвоним в течение 5 минут

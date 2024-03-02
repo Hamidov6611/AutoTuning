@@ -22,6 +22,10 @@ const ModelPage = () => {
     getAllCatalog();
   }, []);
 
+  function formatNumber(number) {
+    return new Intl.NumberFormat('ru-RU').format(number);
+  }
+
   const sendNext = url => {
     navigate(url)
     window.scrollTo({top: 0})
@@ -48,7 +52,7 @@ const ModelPage = () => {
                 {c?.title}
               </p>
               <p className="px-[4%] py-[2%] text-mainBlack text-[20px] font-normal">
-                {c?.price} руб.
+                {formatNumber(c?.price)} руб.
               </p>
               <MyRedButton
               callback={() => sendNext(`/systems/models/${c?.id}`)}
