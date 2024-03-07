@@ -32,7 +32,7 @@ const ExhaustSystems = () => {
       description={`Мы дорожим своей репутацией и даем гарантию на все выполняемые виды работ. При возникновении гарантийного случая или иного вопроса касательно оказанных нами услуг мы максимально оперативно и комфортно для Вас решим возникшие вопросы.`}
       link={`https://auto-tuning.vercel.app/systems`}
     >
-      <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 py-[30px] ol:gap-y-[60px]">
+      <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-8 px-[3%] sl:px-0 py-[30px] ol:gap-y-[24px]">
         <Title>Выхлопные системы</Title>
         <div className="w-full md:h-[549px]">
           <img
@@ -42,7 +42,7 @@ const ExhaustSystems = () => {
           />
         </div>
 
-        <p className="text-sm sm:text-base font-montserrat text-justify text-black font-normal">
+        <p className="text-sm sm:text-base font-montserrat text-justify text-black font-normal ol:mt-4">
           Изготавливаем даунпайпы и выхлопные системы из нержавеющей стали aisi
           304 и 321. Можем изготовить
           абсолютно на любое транспортное средство.

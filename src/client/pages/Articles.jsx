@@ -43,7 +43,7 @@ const ArticlesPages = () => {
           <div className="flex flex-col gap-y-3">
             <p className="font-montserrat font-medium text-xl md:text-[28px] text-black">
               Как меняется расход топлива после установки
-              <br className="lg:flex hidden" /> тюнинг модуля
+              <br className="lg:flex hidden" /> тюнинг модуля?
             </p>
             <Paragraph>
               Расход топлива — достаточно субъективное понятие и может включать в

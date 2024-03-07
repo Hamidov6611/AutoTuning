@@ -68,22 +68,22 @@ const Collection = () => {
         </div>
       </div>
       {/* section 2 */}
-      <div className="overflow-x-auto sm:w-[1280px] mx-auto">
-        <div className="flex flex-wrap gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-6 ol:gap-x-4 items-center w-[1280px]">
+      <div className="sm:max-w-[1223px] mx-auto">
+        <div className="grid grid-cols-3 sm:grid-cols-8  nor:grid-cols-12 gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-3  mx-auto items-center max-w-[1223px]">
           {brand?.map((c, idx) => (
             <div
-              className={`shadow-example flex-col border py-5 px-2 gap-y-2 rounded-[8px]  w-[82.2px] h-[100px] flex items-center justify-center`}
+              className={`shadow-example bg-[#DADADA] flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
             >
-              <img src={BASE_URL + c?.img} alt={c} key={idx} />
-              <p className="m-0 p-0 text-[10px]">{c?.title}</p>
+              <img src={BASE_URL + c?.img} alt={c} key={idx} className="px-2 h-[92%] w-auto object-scale-down"  />
+              <p className="m-0 p-0 text-[10px] text-center h-[8%]">{c?.title}</p>
             </div>
           ))}
+        </div>
           {brand?.length < 1 && (
             <p className="text-center w-full mt-4 font-medium font-montserrat text-mainRed">
               Этот бренд не найден
             </p>
           )}
-        </div>
       </div>
     </div>
   );

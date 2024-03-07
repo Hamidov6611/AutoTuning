@@ -25,7 +25,7 @@ const FileService = () => {
           </p>
           <ul className="space-y-3">
             <li>- Тюнинг программы увеличения мощности мотора - stage1/stage2/stage3 *</li>
-            <li>- Тюнинг программы АКПП и роботизированных коробок передач уровня <br className="lg:flex hidden"/> - stage1/stage2/stage3 *</li>
+            <li>- Тюнинг программы АКПП и роботизированных коробок передач уровня - stage1/stage2/stage3 *</li>
             <li>- Тюнинг программы для экономии топлива - ECO tuning *</li>
             <li>- Отключение сажевых фильтров - DPF/FAP off</li>
             <li>- Отключение системы - EGR off</li>
