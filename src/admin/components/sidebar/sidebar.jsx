@@ -43,8 +43,8 @@ function Sidebar() {
         } sm:translate-x-0`}
         aria-label="Sidebar"
       >
-        <div className="h-full relative px-3 py-1 overflow-y-auto bg-[#24303f] dark:bg-[#24303f]">
-          <ul className="space-y-6 font-medium">
+        <div className="h-screen relative px-3 py-1 overflow-y-auto bg-[#24303f] dark:bg-[#24303f]">
+          <ul className="space-y-6 font-medium h-[32px]">
             {/* logo */}
             <li className="w-full h-full flex justify-start items-start my-8 px-3">
               <svg
@@ -64,14 +64,16 @@ function Sidebar() {
                 />
               </svg>
             </li>
+          </ul>
+          <ul className="space-y-4 font-medium mt-[24px] h-[78%] sm:h-[88%] overflow-y-auto">
             {/* news */}
             <li>
               <NavLink
                 to={"/admin-news"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Новости</span>
@@ -83,8 +85,8 @@ function Sidebar() {
                 to={"/admin-work"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Примеры работ</span>
@@ -96,8 +98,8 @@ function Sidebar() {
                 to={"/admin-catalogs"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Каталог</span>
@@ -109,8 +111,8 @@ function Sidebar() {
                 to={"/admin-brand"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Бренд</span>
@@ -123,8 +125,8 @@ function Sidebar() {
                 onClick={handleSidebar}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Категория</span>
@@ -135,14 +137,11 @@ function Sidebar() {
                 to={"/admin-service"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
-                
-                <span className="flex-1 ml-3 whitespace-nowrap">
-                Сервис
-                </span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Сервис</span>
                 {/* <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span> */}
               </NavLink>
             </li>
@@ -151,8 +150,8 @@ function Sidebar() {
                 to={"/admin-feedback"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Обратная связь</span>
@@ -163,8 +162,8 @@ function Sidebar() {
                 to={"/admin-model"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Модель</span>
@@ -175,8 +174,8 @@ function Sidebar() {
                 to={"/admin-catalog"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Под-модель</span>
@@ -187,8 +186,8 @@ function Sidebar() {
                 to={"/admin-call"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Вызов</span>
@@ -199,11 +198,121 @@ function Sidebar() {
                 to={"/admin-stock"}
                 className={({ isActive }) =>
                   !isActive
-                    ? "text-white text-base md:text-xl font-semibold font-montserrat"
-                    : "text-yellow-300 text-base md:text-xl font-semibold font-montserrat"
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
                 }
               >
                 <span className="ml-3">Акции</span>
+              </NavLink>
+            </li>
+
+            {/* Модель бренда */}
+            <li>
+              <NavLink
+                to={"/admin-brand-model"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Модель бренда</span>
+              </NavLink>
+            </li>
+            {/* Год бренда */}
+            <li>
+              <NavLink
+                to={"/admin-brand-year"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Год бренда</span>
+              </NavLink>
+            </li>
+            {/* Брендовый двигатель */}
+            <li>
+              <NavLink
+                to={"/admin-brand-engine"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Бренд. двигатель</span>
+              </NavLink>
+            </li>
+
+            {/* ECO */}
+            <li>
+              <NavLink
+                to={"/admin-eco"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">ECO</span>
+              </NavLink>
+            </li>
+
+            {/* Этап 1*/}
+            <li>
+              <NavLink
+                to={"/admin-stock"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Этап 1</span>
+              </NavLink>
+            </li>
+
+            {/* Этап 2*/}
+            <li>
+              <NavLink
+                to={"/admin-stock"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Этап 2</span>
+              </NavLink>
+            </li>
+
+            {/* Коробка передач*/}
+            <li>
+              <NavLink
+                to={"/admin-stock"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">Коробка передач</span>
+              </NavLink>
+            </li>
+
+            {/* RC +*/}
+            <li>
+              <NavLink
+                to={"/admin-stock"}
+                className={({ isActive }) =>
+                  !isActive
+                    ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                    : "text-yellow-300 text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
+                }
+              >
+                <span className="ml-3">RC +</span>
               </NavLink>
             </li>
           </ul>
@@ -211,7 +320,7 @@ function Sidebar() {
             onClick={toggleSidebar}
             className="absolute bottom-[3%] flex justify-end w-full right-[2%]"
           >
-            <a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a className="flex sm:hidden items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <svg
                 className="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                 aria-hidden="true"
@@ -227,7 +336,7 @@ function Sidebar() {
                   d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
                 />
               </svg>
-              <span className="flex-1 ml-3 whitespace-nowrap">Закрывать</span>
+              {/* <span className="flex-1 ml-3 whitespace-nowrap">Закрывать</span> */}
             </a>
           </button>
         </div>

@@ -35,11 +35,13 @@ const AdminBrand = () => {
     setItemId(id);
     setIsEdit(true);
   };
+
+  console.log(pageSize)
   return (
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Бренд</p>
+          <p className="text-white font-semibold text-[20px]">Бренд ({pageSize} шт.)</p>
           <IconButton
             onClick={() => setIsOpen(true)}
             sx={{ cursor: "pointer" }}
@@ -58,6 +60,10 @@ const AdminBrand = () => {
                   </th>
                   <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Заголовок
+                  </th>
+
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                  Категория
                   </th>
 
                   <th className="py-4 px-4 font-medium text-black dark:text-white">
@@ -89,9 +95,16 @@ const AdminBrand = () => {
                         className="w-[100px] h-[80px]"
                       />
                     </td>
+                    
                     <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
                       <h5 className="font-medium text-black dark:text-white line-clamp-1">
                         {c?.title}
+                      </h5>
+                    </td>
+
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
+                        {c?.catalog?.title}
                       </h5>
                     </td>
 

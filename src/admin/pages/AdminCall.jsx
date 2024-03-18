@@ -36,7 +36,7 @@ const AdminCall = () => {
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Вызов</p>
+          <p className="text-white font-semibold text-[20px]">Вызов ({pageSize} шт.)</p>
         </div>
 
         <div className="rounded-sm  border-stroke bg-[#24303f] w-[98%] mx-auto px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">

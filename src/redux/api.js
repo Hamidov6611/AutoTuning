@@ -21,7 +21,7 @@ export const BASE_API = createApi({
       query: (limit="") => `auto-catalog/?page=1&limit=${limit}`
     }),
     getOneNews: build.query({
-      query: (newsId: "") => `news/${newsId}`
+      query: (newsId = "") => `news/${newsId}`
     })
   }),
 });

@@ -8,5 +8,24 @@ import AdminModel from "./AdminModel";
 import AdminCatalog from "./AdminCatalog";
 import AdminCall from "./AdminCall";
 import AdminStock from "./AdminStock";
+import AdminBrandModel from "./AdminBrandModel";
+import AdminBrandYear from "./AdminBrandYear";
+import AdminBrandEngine from "./AdminBrandEngine";
+import AdminEco from "./AdminEcoPages";
 
-export { AdminLogin, AdminNews, AdminWork, AdminCategory, AdminService, AdminFeedback, AdminModel, AdminCatalog, AdminCall, AdminStock };
+export {
+  AdminLogin,
+  AdminNews,
+  AdminWork,
+  AdminCategory,
+  AdminService,
+  AdminFeedback,
+  AdminModel,
+  AdminCatalog,
+  AdminCall,
+  AdminStock,
+  AdminBrandModel,
+  AdminBrandYear,
+  AdminBrandEngine,
+  AdminEco,
+};

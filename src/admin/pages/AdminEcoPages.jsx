@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import AdminLayout from "../components/layout/layout";
 import { IconButton, Pagination } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { BASE_URL, instance } from "../../api/axios";
-import AddNews from "../components/service/addService";
-import EditNews from "../components/service/editService";
-import RemoveNews from "../components/service/removeService";
+import { instance } from "../../api/axios";
+import AddModal from "../components/eco/addModal";
+import EditBrand from "../components/eco/editModal";
+import RemoveBrand from "../components/eco/removeModal";
 
-const AdminService = () => {
+const AdminEco = () => {
   const [pageId, setPageId] = useState(1);
   const [pageSize, setPageSize] = useState(Number);
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +17,10 @@ const AdminService = () => {
   const [itemId, setItemId] = useState(Number);
   const getData = async () => {
     try {
-      const { data } = await instance(`/service?page=${pageId}&limit=10`);
+      const { data } = await instance(
+        `/eco/pagination?page=${pageId}&limit=10`
+      );
       setPageSize(data?.count);
-      console.log(data);
       setNews(data?.data);
     } catch (error) {
       console.log(error);
@@ -36,11 +37,14 @@ const AdminService = () => {
     setItemId(id);
     setIsEdit(true);
   };
+
   return (
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Сервис ({pageSize} шт.)</p>
+          <p className="text-white font-semibold text-[20px]">
+            ECO ({pageSize} шт.)
+          </p>
           <IconButton
             onClick={() => setIsOpen(true)}
             sx={{ cursor: "pointer" }}
@@ -55,21 +59,31 @@ const AdminService = () => {
               <thead className="bg-[#313d4a]">
                 <tr className="bg-gray-2 text-left dark:bg-meta-4">
                   <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    Изображение
-                  </th>
-                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    Заголовок
+                    Engine
                   </th>
 
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Original(NM)
+                  </th>
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    After(NM)
+                  </th>
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Percentage
+                  </th>
+                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                    Price
+                  </th>
+                  
                   <th className="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
                   </th>
                 </tr>
               </thead>
 
-              {isOpen && <AddNews setIsOpen={setIsOpen} getData={getData} />}
+              {isOpen && <AddModal setIsOpen={setIsOpen} getData={getData} />}
               {isRemove && (
-                <RemoveNews
+                <RemoveBrand
                   setIsRemove={setIsRemove}
                   getData={getData}
                   id={itemId}
@@ -77,24 +91,47 @@ const AdminService = () => {
               )}
 
               {isEdit && (
-                <EditNews setIsOpen={setIsEdit} getData={getData} id={itemId} />
+                <EditBrand
+                  setIsOpen={setIsEdit}
+                  getData={getData}
+                  id={itemId}
+                />
               )}
 
               <tbody>
                 {news?.map((c, index) => (
                   <tr key={index}>
-                    <td className="border-b border-[#eee] py-5 pl-2 dark:border-strokedark xl:pl-11">
-                      <img
-                        src={`${BASE_URL}${c?.img}`}
-                        alt=""
-                        className="w-[120px] h-[120px] rounded-md object-cover"
-                      />
-                    </td>
                     <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
                       <h5 className="font-medium text-black dark:text-white line-clamp-1">
-                        {c?.title}
+                        {c?.engine.title}
                       </h5>
                     </td>
+
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
+                        {c?.original_nm}
+                      </h5>
+                    </td>
+
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
+                        {c?.after_nm}
+                      </h5>
+                    </td>
+
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
+                        {c?.percentage}%
+                      </h5>
+                    </td>
+
+                    <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
+                        {c?.price} ₽
+                      </h5>
+                    </td>
+
+                    
 
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <div className="flex items-center justify-center sm:justify-start space-x-3.5">
@@ -168,4 +205,4 @@ const AdminService = () => {
   );
 };
 
-export default AdminService;
+export default AdminEco;

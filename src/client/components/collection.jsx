@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BASE_URL, instance } from "../../api/axios";
+import { Link } from "react-router-dom";
 
 const Collection = () => {
   const [catalog, setCatalog] = useState([]);
@@ -71,12 +72,12 @@ const Collection = () => {
       <div className="sm:max-w-[1223px] mx-auto">
         <div className="grid grid-cols-3 sm:grid-cols-8  nor:grid-cols-12 gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-3  mx-auto items-center max-w-[1223px]">
           {brand?.map((c, idx) => (
-            <div
-              className={`shadow-example bg-[#DADADA] flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
+            <Link to={`/${c?.title}/${c?.id}`} onClick={() => window.scrollTo({top: 0})}
+              className={`shadow-example cursor-pointer bg-[#DADADA] flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
             >
               <img src={BASE_URL + c?.img} alt={c} key={idx} className="px-2 h-[92%] w-auto object-scale-down"  />
               <p className="m-0 p-0 text-[10px] text-center h-[8%]">{c?.title}</p>
-            </div>
+            </Link>
           ))}
         </div>
           {brand?.length < 1 && (

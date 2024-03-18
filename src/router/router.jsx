@@ -18,9 +18,13 @@ import WorksCard from "../client/pages/WorkCard";
 import About from "../client/pages/About";
 import FileService from "../client/pages/FileService";
 import {
+  AdminBrandEngine,
+  AdminBrandModel,
+  AdminBrandYear,
   AdminCall,
   AdminCatalog,
   AdminCategory,
+  AdminEco,
   AdminFeedback,
   AdminLogin,
   AdminModel,
@@ -35,6 +39,8 @@ import ArticlesPages from "../client/pages/Articles";
 import AdminBaseCatalog from "../admin/pages/AdminBaseCatalog";
 import AdminBrand from "../admin/pages/AdminBrand";
 import CommentPages from "../client/pages/CommentPages";
+import ModelDetails from "../client/pages/ModelDetails";
+import EcoPages from "../client/pages/EcoPages";
 
 export const router = createBrowserRouter([
   {
@@ -119,6 +125,14 @@ export const router = createBrowserRouter([
         path: "comment",
         element: <CommentPages />,
       },
+      {
+        path: "/:brand/:id",
+        element: <ModelDetails />,
+      },
+      {
+        path: "/:brand_name/:model_name/:engine_id",
+        element: <EcoPages />
+      },
       // Admin router
       {
         path: "admin-login",
@@ -167,6 +181,22 @@ export const router = createBrowserRouter([
       {
         path: "admin-brand",
         element: <AdminBrand />,
+      },
+      {
+        path: "admin-brand-model",
+        element: <AdminBrandModel />,
+      },
+      {
+        path: "admin-brand-year",
+        element: <AdminBrandYear />,
+      },
+      {
+        path: "admin-brand-engine",
+        element: <AdminBrandEngine />,
+      },
+      {
+        path: "admin-eco",
+        element: <AdminEco />,
       },
     ],
   },

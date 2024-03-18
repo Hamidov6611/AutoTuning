@@ -40,7 +40,7 @@ const AdminBaseCatalog = () => {
     <AdminLayout>
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
-          <p className="text-white font-semibold text-[20px]">Новости</p>
+          <p className="text-white font-semibold text-[20px]">Каталог ({pageSize} шт.)</p>
           <IconButton
             onClick={() => setIsOpen(true)}
             sx={{ cursor: "pointer" }}

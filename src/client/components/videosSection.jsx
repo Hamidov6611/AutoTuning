@@ -29,11 +29,11 @@ const VideosSection = () => {
             onMouseEnter={() => setShowControls(true)}
             onMouseLeave={() => setShowControls(false)}
             onClick={() => setShowControls(true)}
-            className="sm:h-[400px]"
+            className="sm:h-[300px] w-full"
           >
             <ReactPlayer
               url={BASE_URL + c?.video}
-              className="w-[100%] m-0 p-0"
+              className="w-[100%] h-full m-0 p-0"
               width={"100%"}
               controls={showControls}
               height={"100%"}
