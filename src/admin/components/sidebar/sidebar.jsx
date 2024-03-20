@@ -263,7 +263,7 @@ function Sidebar() {
             {/* Этап 1*/}
             <li>
               <NavLink
-                to={"/admin-stock"}
+                to={"/admin-stage"}
                 className={({ isActive }) =>
                   !isActive
                     ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
@@ -277,7 +277,7 @@ function Sidebar() {
             {/* Этап 2*/}
             <li>
               <NavLink
-                to={"/admin-stock"}
+                to={"/admin-stage2"}
                 className={({ isActive }) =>
                   !isActive
                     ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
@@ -291,7 +291,7 @@ function Sidebar() {
             {/* Коробка передач*/}
             <li>
               <NavLink
-                to={"/admin-stock"}
+                to={"/admin-transmission"}
                 className={({ isActive }) =>
                   !isActive
                     ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"

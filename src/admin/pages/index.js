@@ -12,6 +12,9 @@ import AdminBrandModel from "./AdminBrandModel";
 import AdminBrandYear from "./AdminBrandYear";
 import AdminBrandEngine from "./AdminBrandEngine";
 import AdminEco from "./AdminEcoPages";
+import AdminStage from "./AdminStage";
+import AdminStage2 from "./AdminStage2";
+import AdminTransmission from "./AdminTransmission";
 
 export {
   AdminLogin,
@@ -28,4 +31,7 @@ export {
   AdminBrandYear,
   AdminBrandEngine,
   AdminEco,
+  AdminStage,
+  AdminStage2,
+  AdminTransmission,
 };

@@ -10,7 +10,9 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
   const [formData, setFormData] = useState({
     after_nm: "",
     original_nm: "",
-    percentage: "",
+    original_hp: "",
+    after_hp: "",
+    exception: "",
     description: "",
     price: "",
     engine_id: engineId,
@@ -26,7 +28,7 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
   const AddBrand = async (e) => {
     e.preventDefault();
     try {
-      await instance.post(`/eco`, formData);
+      await instance.post(`/stage2`, formData);
       getData();
       setIsOpen(false);
       toast.success("Success");
@@ -91,7 +93,7 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
           <p>
-            Добавить Eco{" "}
+            Добавить Этап 2{" "}
             <b className="text-[12px] text-amber-950">(1,2,3,4 это очередь)</b>
           </p>
           <svg
@@ -213,29 +215,56 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
           </div>
           <div className="flex w-full">
             <input
-              value={formData.percentage}
+              value={formData.price}
               onChange={(e) =>
-                setFormData({ ...formData, percentage: e.target.value })
+                setFormData({ ...formData, price: e.target.value })
+              }
+              type="number"
+              className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
+              placeholder="Price (₽)"
+              required
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-x-4 mb-4">
+          <div className="flex w-full">
+            <input
+              value={formData.original_hp}
+              onChange={(e) =>
+                setFormData({ ...formData, original_hp: e.target.value })
               }
               type="text"
               className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
-              placeholder="Percentage (%)"
+              placeholder="Original (HP)"
+              required
+            />
+          </div>
+          <div className="flex w-full">
+            <input
+              value={formData.after_hp}
+              onChange={(e) =>
+                setFormData({ ...formData, after_hp: e.target.value })
+              }
+              type="number"
+              className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
+              placeholder="After (HP)"
               required
             />
           </div>
         </div>
         <div className="flex w-full mb-4">
           <input
-            value={formData.price}
+            value={formData.exception}
             onChange={(e) =>
-              setFormData({ ...formData, price: e.target.value })
+              setFormData({ ...formData, exception: e.target.value })
             }
-            type="number"
+            type="text"
             className="outline-none border w-full py-2 border-[#343434] rounded-md text-[#343434] px-3 tetx-[15px]"
-            placeholder="Price (₽)"
+            placeholder="исключение"
             required
           />
         </div>
+
         <CKEditor
           editor={ClassicEditor}
           data={formData.description}

@@ -30,7 +30,10 @@ import {
   AdminModel,
   AdminNews,
   AdminService,
+  AdminStage,
+  AdminStage2,
   AdminStock,
+  AdminTransmission,
   AdminWork,
 } from "../admin/pages";
 import CatalizatorPages from "../client/pages/CatalizatorPages";
@@ -131,7 +134,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/:brand_name/:model_name/:engine_id",
-        element: <EcoPages />
+        element: <EcoPages />,
       },
       // Admin router
       {
@@ -197,6 +200,18 @@ export const router = createBrowserRouter([
       {
         path: "admin-eco",
         element: <AdminEco />,
+      },
+      {
+        path: "admin-stage",
+        element: <AdminStage />,
+      },
+      {
+        path: "admin-stage2",
+        element: <AdminStage2 />,
+      },
+      {
+        path: "admin-transmission",
+        element: <AdminTransmission />,
       },
     ],
   },
