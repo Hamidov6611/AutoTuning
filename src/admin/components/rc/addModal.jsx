@@ -8,9 +8,9 @@ import toast from "react-hot-toast";
 const AddBrand = ({ setIsOpen, getData, id }) => {
   const [engineId, setEngineId] = useState(null);
   const [formData, setFormData] = useState({
-    list: "",
+    // list: "",
     description: "",
-    price: "",
+    title: "",
     engine_id: engineId,
   });
   const [dates, setData] = useState({
@@ -24,7 +24,7 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
   const AddBrand = async (e) => {
     e.preventDefault();
     try {
-      await instance.post(`/transmission`, formData);
+      await instance.post(`/rc-plus`, formData);
       getData();
       setIsOpen(false);
       toast.success("Success");
@@ -89,7 +89,7 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
           <p>
-            Коробка передач{" "}
+            RC +{" "}
             <b className="text-[12px] text-amber-950">(1,2,3,4 это очередь)</b>
           </p>
           <svg
@@ -183,7 +183,7 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
               ))}
             </select>
           </div>
-          <div className="flex w-full">
+          {/* <div className="flex w-full">
             <input
               value={formData.price}
               onChange={(e) =>
@@ -194,24 +194,24 @@ const AddBrand = ({ setIsOpen, getData, id }) => {
               placeholder="Price (₽)"
               required
             />
-          </div>
+          </div> */}
         </div>
         <CKEditor
           editor={ClassicEditor}
           config={{
-            placeholder: "список",
+            placeholder: "Заголовок",
           }}
-          data={formData.list}
+          data={formData.title}
           onChange={(event, editor) => {
             const data = editor.getData();
-            setFormData({ ...formData, list: data });
+            setFormData({ ...formData, title: data });
           }}
         />
         <div className="h-4"></div>
         <CKEditor
           editor={ClassicEditor}
           config={{
-            placeholder: "описание",
+            placeholder: "Oписание",
           }}
           data={formData.description}
           onChange={(event, editor) => {

@@ -29,6 +29,7 @@ import {
   AdminLogin,
   AdminModel,
   AdminNews,
+  AdminRcPlus,
   AdminService,
   AdminStage,
   AdminStage2,
@@ -212,6 +213,10 @@ export const router = createBrowserRouter([
       {
         path: "admin-transmission",
         element: <AdminTransmission />,
+      },
+      {
+        path: "admin-rc-plus",
+        element: <AdminRcPlus />,
       },
     ],
   },

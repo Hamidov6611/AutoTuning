@@ -443,7 +443,7 @@ const Footer = () => {
             Адрес
             </p>
           </div>
-          <Link to={"tel:+79268103277"} className="flex items-center gap-x-[20px]">
+          <Link to={"tel:+79112083051"} className="flex items-center gap-x-[20px]">
             <div className="flex items-center justify-center z-[1]  rounded-full">
               <svg
                 width="18"
@@ -485,7 +485,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex items-center gap-x-[40px]">
-            <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
+            <Link to={"https://vk.com/k8_strasse"} className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
               <svg
                 width="21"
                 height="13"
@@ -498,8 +498,8 @@ const Footer = () => {
                   fill="#FF0000"
                 />
               </svg>
-            </div>
-            <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
+            </Link>
+            <Link to={"https://www.instagram.com/k8_strasse/"} className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
               <svg
                 width="20"
                 height="20"
@@ -527,7 +527,7 @@ const Footer = () => {
                   stroke-linejoin="round"
                 />
               </svg>
-            </div>
+            </Link>
             <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
               <svg
                 width="20"

@@ -2,7 +2,7 @@ import React from "react";
 
 const NoContent = () => {
   return (
-    <div className="w-[522px] flex justify-center">
+    <div className="w-full sm:w-[522px] flex justify-center">
       <div className="w-[200px] mt-[40px] h-[300px]">
         <img
           src="/images/no.png"

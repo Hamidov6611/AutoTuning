@@ -16,9 +16,7 @@ const Contact = () => {
       link={BASE_LINK + "contact"}
     >
       <div className="w-[98%] st:max-w-[1280px] mx-auto flex flex-col gap-y-6 tl:gap-y-16 px-[3%] sl:px-0 py-[30px] ol:gap-y-[60px]">
-      
         <div className="flex lg:flex-row flex-col min-h-[541px] w-full shadow-xl hover:shadow-md hover:shadow-[#FF0000] p-[30px]">
-        
           <div className="lg:w-1/3 h-full">
             <Title>Контакты</Title>
 
@@ -40,7 +38,8 @@ const Contact = () => {
                   />
                 </svg>
                 <p className="font-montserrat text-[20px] font-normal text-mainBlack">
-                  +7 (926) 810 32 77
+                  {/* +7 (926) 810 32 77 */}
+                  +7 (911) 208-30-51
                 </p>
               </Link>
               <div className="flex gap-x-[11px] items-center">
@@ -80,7 +79,7 @@ const Contact = () => {
               </p>
             </div>
           </div>
-         
+
           <div className="lg:w-2/3 h-full">
             <img
               src="/images/image 19.png"

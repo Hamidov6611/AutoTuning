@@ -15,6 +15,7 @@ import AdminEco from "./AdminEcoPages";
 import AdminStage from "./AdminStage";
 import AdminStage2 from "./AdminStage2";
 import AdminTransmission from "./AdminTransmission";
+import AdminRcPlus from "./AdminRcPlus";
 
 export {
   AdminLogin,
@@ -34,4 +35,5 @@ export {
   AdminStage,
   AdminStage2,
   AdminTransmission,
+  AdminRcPlus,
 };

@@ -3,13 +3,16 @@ import { instance } from "../../api/axios";
 import FeedbackModal from "./feedback-modal";
 import MyButton from "./ui/button/button";
 import NoContent from "./ui/no-content";
+import Help from "./Help";
 
 const Stage2 = ({ id }) => {
   const [eco, setEco] = useState([]);
+  const [isHelp, setIsHelp] = useState(false);
+
   const [isModal, setIsModal] = useState(false);
   const getData = async () => {
     try {
-      const { data } = await instance.get(`/stage2/${id}/`);
+      const { data } = await instance.get(`/stage2/engine/${id}/`);
       setEco(data[0]);
       console.log(data);
     } catch (error) {
@@ -28,7 +31,11 @@ const Stage2 = ({ id }) => {
           {/* section 1 */}
           <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 h-[40.39px]">
             <div className="h-full">
-              <p className="text-[13px] md:text-base leading-[17px] font-normal font-montserrat text-[#56B2E7]">
+            <p
+                role="button"
+                onClick={() => setIsHelp(true)}
+                className="cursor-pointer text-[13px] md:text-base leading-[17px] font-normal font-montserrat text-[#56B2E7]"
+              >
                 Больше <br />
                 информации
               </p>
@@ -135,7 +142,7 @@ const Stage2 = ({ id }) => {
           </div>
         )}
       </div>
-
+      {isHelp && <Help setState={setIsHelp}/>}
       {isModal && <FeedbackModal setIsModal={setIsModal} />}
 
       <div className="w-full min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl px-[38px] gap-x-[36px]">

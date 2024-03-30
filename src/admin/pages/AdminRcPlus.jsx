@@ -3,11 +3,11 @@ import AdminLayout from "../components/layout/layout";
 import { IconButton, Pagination } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { instance } from "../../api/axios";
-import AddModal from "../components/transmission/addModal";
-import EditBrand from "../components/transmission/editModal";
-import RemoveBrand from "../components/transmission/removeModal";
+import AddModal from "../components/rc/addModal";
+import EditBrand from "../components/rc/editModal";
+import RemoveBrand from "../components/rc/removeModal";
 
-const AdminTransmission = () => {
+const AdminRcPlus = () => {
   const [pageId, setPageId] = useState(1);
   const [pageSize, setPageSize] = useState(Number);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const AdminTransmission = () => {
   const getData = async () => {
     try {
       const { data } = await instance(
-        `/transmission/pagination?page=${pageId}&limit=10`
+        `/rc-plus/pagination?page=${pageId}&limit=10`
       );
       setPageSize(data?.count);
       setNews(data?.data);
@@ -43,7 +43,7 @@ const AdminTransmission = () => {
       <div className="min-h-[100vh] py-16 md:pl-[25px]">
         <div className=" w-[90%] lg:w-[98%] mx-auto mb-12 ml-[6%] sm:ml-[1%] items-center mt-2 flex justify-between">
           <p className="text-white font-semibold text-[20px]">
-            Коробка передач ({pageSize} шт.)
+          RC + ({pageSize} шт.)
           </p>
           <IconButton
             onClick={() => setIsOpen(true)}
@@ -64,7 +64,7 @@ const AdminTransmission = () => {
 
                   
                   <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                    Price
+                  Заголовок
                   </th>
 
                   <th className="py-4 px-4 font-medium text-black dark:text-white">
@@ -102,9 +102,11 @@ const AdminTransmission = () => {
                     
 
                     <td className="border-b border-[#eee] py-5 pl-6 dark:border-strokedark xl:pl-11">
-                      <h5 className="font-medium text-black dark:text-white line-clamp-1">
-                        {c?.price} ₽
-                      </h5>
+                      <h5 className="font-medium text-black dark:text-white line-clamp-1"
+                      dangerouslySetInnerHTML={{
+                        __html: c?.title,
+                      }}
+                      />
                     </td>
 
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -179,4 +181,4 @@ const AdminTransmission = () => {
   );
 };
 
-export default AdminTransmission;
+export default AdminRcPlus;

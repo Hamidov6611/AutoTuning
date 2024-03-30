@@ -7,7 +7,7 @@ const RemoveBrand = ({ setIsRemove, getData, id }) => {
   const RemoveBrand = async (e) => {
     e.preventDefault();
     try {
-      await instance.delete(`/transmission/${id}/`);
+      await instance.delete(`/rc-plus/${id}/`);
       getData();
       setIsRemove(false);
       toast.success("Success");
@@ -23,7 +23,7 @@ const RemoveBrand = ({ setIsRemove, getData, id }) => {
         className="rounded-md w-[90%] md:w-[50%] p-4 lg:w-[30%] h-[140px] bg-white"
       >
         <div className="w-full flex items-center justify-between text-[#343434] font-semibold text-[16px]">
-          <p>Коробка передач</p>
+          <p>RC +</p>
           <svg
             onClick={closeHandler}
             className="cursor-pointer"

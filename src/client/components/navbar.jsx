@@ -78,7 +78,7 @@ const Navbar = () => {
                 Адрес
               </p>
             </div>
-            <Link to={"tel:+79268103277"} className="flex gap-x-[10px] items-center">
+            <Link to={"tel:+79112083051"} className="flex gap-x-[10px] items-center">
               <img
                 src="/images/phone.png"
                 alt="phone"

@@ -6,6 +6,8 @@ import Paragraph from "../components/ui/tag/paragraph";
 import Eco from "../components/Eco";
 import Stage1 from "../components/Stage1";
 import Stage2 from "../components/Stage2";
+import Transmission from "../components/Transmission";
+import RcPlus from "../components/RcPlus";
 
 const EcoPages = () => {
   const { brand_name, model_name, engine_id } = useParams();
@@ -113,11 +115,11 @@ const EcoPages = () => {
                     })
                   }
                   align="center"
-                  className={`min-w-[114px] text-[16px] font-normal font-montserrat border flex  justify-center items-center text-center h-full cursor-pointer ${
-                    menu.menu5 && "bg-mainRed text-white"
+                  className={`min-w-[114px] text-[16px] font-normal font-montserrat border cursor-pointer ${
+                    menu.menu5 && "bg-mainRed"
                   } transition-all duration-300 ease-in`}
                 >
-                  <img src="/images/rcplus.svg" alt="" />
+                  <img src="/images/rcplus.svg" alt="" className="" />
                 </th>
               </tr>
             </thead>
@@ -128,6 +130,8 @@ const EcoPages = () => {
         {menu?.menu1 && <Eco id={engine_id} />}
         {menu?.menu2 && <Stage1 id={engine_id} />}
         {menu?.menu3 && <Stage2 id={engine_id} />}
+        {menu?.menu4 && <Transmission id={engine_id} />}
+        {menu?.menu5 && <RcPlus id={engine_id} />}
       </div>
     </Layout>
   );

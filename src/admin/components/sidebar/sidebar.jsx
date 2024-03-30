@@ -305,7 +305,7 @@ function Sidebar() {
             {/* RC +*/}
             <li>
               <NavLink
-                to={"/admin-stock"}
+                to={"/admin-rc-plus"}
                 className={({ isActive }) =>
                   !isActive
                     ? "text-white text-base md:text-xl font-medium font-montserrat hover:pl-3 transition-all duration-300 ease-in-out"
