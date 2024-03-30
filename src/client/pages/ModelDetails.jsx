@@ -98,8 +98,8 @@ const ModelDetails = () => {
           {/* Body */}
           <div className="border border-black rounded-b-[10px] h-auto] flex flex-col gap-y-3 p-[20px]">
             {cars?.model?.map((c, idx) => (
-              <Link
-                to={`/${c?.title}/${c?.id}`}
+              <div
+                // to={`/${c?.title}/${c?.id}`}
                 onClick={() => {
                   getData(carsType[1], c?.id);
                   setName({ ...name, modelName: c?.title });
@@ -112,7 +112,7 @@ const ModelDetails = () => {
                 }   pb-1 px-4 cursor-pointer transition-all duration-300 ease-in-out hover:text-[#4859b6] `}
               >
                 {c?.title}
-              </Link>
+              </div>
             ))}
           </div>
         </div>
