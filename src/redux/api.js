@@ -12,18 +12,28 @@ export const BASE_API = createApi({
       query: () => `catalog/?page=1&limit=10`,
     }),
     getNews: build.query({
-      query: () => `news?page=1&limit=3`
+      query: () => `news?page=1&limit=3`,
     }),
     getWorks: build.query({
-      query: () => `work?page=1&limit=3`
+      query: () => `work?page=1&limit=3`,
     }),
     getVideos: build.query({
-      query: (limit="") => `auto-catalog/?page=1&limit=${limit}`
+      query: (limit = "") => `auto-catalog/?page=1&limit=${limit}`,
     }),
     getOneNews: build.query({
-      query: (newsId = "") => `news/${newsId}`
-    })
+      query: (newsId = "") => `news/${newsId}`,
+    }),
+    getBrandModels: build.query({
+      query: (id = "") => `/catalog/brand/${id}`,
+    }),
   }),
 });
 
-export const { useGetCategoryQuery, useGetCatalogQuery, useGetNewsQuery, useGetWorksQuery, useGetVideosQuery } = BASE_API;
+export const {
+  useGetCategoryQuery,
+  useGetCatalogQuery,
+  useGetNewsQuery,
+  useGetWorksQuery,
+  useGetVideosQuery,
+  useGetBrandModelsQuery,
+} = BASE_API;

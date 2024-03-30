@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BASE_URL, instance } from "../../api/axios";
 import { Link } from "react-router-dom";
+import { useGetBrandModelsQuery } from "../../redux/api";
 
 const Collection = () => {
   const [catalog, setCatalog] = useState([]);
-  const [brand, setBrand] = useState([]);
   const [id, setId] = useState(1);
+  const { data = [], isLoading } = useGetBrandModelsQuery(id);
   const getCatalog = useCallback(async () => {
     try {
       const { data } = await instance.get(`/catalog/?page=1&limit=10`);
@@ -16,22 +17,9 @@ const Collection = () => {
     }
   }, []);
 
-  const getBrand = useCallback(async () => {
-    try {
-      const { data } = await instance.get(`/catalog/brand/${id}`);
-      setBrand(data?.brand);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [id]);
-
   useEffect(() => {
     getCatalog();
   }, [getCatalog]);
-
-  useEffect(() => {
-    getBrand();
-  }, [id, getBrand]);
 
   const toggleCard = (item) => {
     setId(item?.id);
@@ -71,20 +59,29 @@ const Collection = () => {
       {/* section 2 */}
       <div className="sm:max-w-[1223px] mx-auto">
         <div className="grid grid-cols-3 sm:grid-cols-8  nor:grid-cols-12 gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-3  mx-auto items-center max-w-[1223px]">
-          {brand?.map((c, idx) => (
-            <Link to={`/${c?.title}/${c?.id}`} onClick={() => window.scrollTo({top: 0})}
+          {data?.brand?.map((c, idx) => (
+            <Link
+              to={`/${c?.title}/${c?.id}`}
+              onClick={() => window.scrollTo({ top: 0 })}
               className={`shadow-example cursor-pointer bg-[#DADADA] flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
             >
-              <img src={BASE_URL + c?.img} alt={c} key={idx} className="px-2 h-[92%] w-auto object-scale-down"  />
-              <p className="m-0 p-0 text-[10px] text-center h-[8%]">{c?.title}</p>
+              <img
+                src={BASE_URL + c?.img}
+                alt={c}
+                key={idx}
+                className="px-2 h-[92%] w-auto object-scale-down"
+              />
+              <p className="m-0 p-0 text-[10px] text-center h-[8%]">
+                {c?.title}
+              </p>
             </Link>
           ))}
         </div>
-          {brand?.length < 1 && (
-            <p className="text-center w-full mt-4 font-medium font-montserrat text-mainRed">
-              Этот бренд не найден
-            </p>
-          )}
+        {data?.brand?.length < 1 && (
+          <p className="text-center w-full mt-4 font-medium font-montserrat text-mainRed">
+            Этот бренд не найден
+          </p>
+        )}
       </div>
     </div>
   );
