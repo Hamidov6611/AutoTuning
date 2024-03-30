@@ -98,12 +98,12 @@ const ModelDetails = () => {
           {/* Body */}
           <div className="border border-black rounded-b-[10px] h-auto] flex flex-col gap-y-3 p-[20px]">
             {cars?.model?.map((c, idx) => (
-              <div 
-              // to={`/${c?.title}/${c?.id}`}
+              <div
+                // to={`/${c?.title}/${c?.id}`}
                 onClick={() => {
                   getData(carsType[1], c?.id);
                   setName({ ...name, modelName: c?.title });
-                  window.scrollTo({top : 0})
+                  window.scrollTo({ top: 0 });
                 }}
                 key={idx}
                 className={`text-sm font-normal font-montserrat text-black ${
@@ -328,7 +328,7 @@ const ModelDetails = () => {
       </div>
 
       <div className="w-full px-[3%]">
-      {isModal && <FeedbackModal setIsModal={setIsModal} />}
+        {isModal && <FeedbackModal setIsModal={setIsModal} />}
       </div>
 
       <div className="w-w-[98%] mb-20 st:max-w-[1280px] mx-auto tl:gap-y-16 px-[3%] min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl gap-x-[36px]">
