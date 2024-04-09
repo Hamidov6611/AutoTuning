@@ -81,10 +81,14 @@ const Contact = () => {
           </div>
 
           <div className="lg:w-2/3 h-full">
-            <img
-              src="/images/image 19.png"
-              alt=""
-              className="mt-[80px] w-full"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4758.5203551687!2d30.322533840670577!3d59.903740851254895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46963044a0b84a01%3A0x4814bb954a51ab0f!2z0JrQuNC10LLRgdC60LDRjyDRg9C7LiwgMTQsINGN0YLQsNC2IDMsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTYwODQ!5e0!3m2!1sru!2sru!4v1712680004924!5m2!1sru!2sru"
+              classname="w-[500px] h-[300px] sm:h-[500px]"
+              width={"100%"}
+              height={600}
+              frameBorder={1}
+              allowFullScreen="true"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>

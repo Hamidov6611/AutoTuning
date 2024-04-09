@@ -7,11 +7,22 @@ import NoContent from "./ui/no-content";
 const RcPlus = ({ id }) => {
   const [eco, setEco] = useState([]);
   const [isModal, setIsModal] = useState(false);
+  const getEco = async (id) => {
+    try {
+      const { data } = await instance.get(`/parsing-cars-tunings/${id}`);
+      setEco(data?.tuning_statistic_id);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getData = async () => {
     try {
-      const { data } = await instance.get(`/rc-plus/engine/${id}/`);
-      setEco(data[0]);
+      const { data } = await instance.get(`/parsing-cars-engines/${id}/`);
+      let arr = data?.tuning_id?.filter((c) => c.name == "RC +");
       console.log(data);
+      getEco(arr[0]?.id);
     } catch (error) {
       console.log(error);
     }
@@ -20,19 +31,22 @@ const RcPlus = ({ id }) => {
   useEffect(() => {
     getData();
   }, [id]);
-
-  return eco?.title ? (
+  console.log(eco);
+  return (
     <div className="flex flex-col w-full gap-y-12 md:gap-y-40">
       <div className="w-full flex gap-y-12 md:flex-row flex-col justify-between md:gap-x-6">
         <div className="md:w-[60%] flex flex-col gap-y-4">
           <div className="w-full border flex flex-col gap-y-4 p-3">
             <p className="text-[16px] font-normal text-[#000] font-montserrat">
               Мы разработали пакет опций RC+ для предоставления нашим клиентам
-              непревзойденного <br className="lg:flex hidden"/> водительского опыта. Добавляя новый программный
-              код в исходную систему управления <br className="lg:flex hidden"/>двигателем, мы теперь можем
-              программировать новые функции, такие как контроль <br className="lg:flex hidden"/>запуска,
-              переключение без сцепления, антикражный режим и многое другое. Еще
-              больше <br className="lg:flex hidden"/>удовольствия за рулем для тех, кто может справиться с этим.
+              непревзойденного <br className="lg:flex hidden" /> водительского
+              опыта. Добавляя новый программный код в исходную систему
+              управления <br className="lg:flex hidden" />
+              двигателем, мы теперь можем программировать новые функции, такие
+              как контроль <br className="lg:flex hidden" />
+              запуска, переключение без сцепления, антикражный режим и многое
+              другое. Еще больше <br className="lg:flex hidden" />
+              удовольствия за рулем для тех, кто может справиться с этим.
             </p>
             {/* <p
               className="text-[16px] font-normal text-[#56B2E7] font-montserrat"
@@ -42,18 +56,16 @@ const RcPlus = ({ id }) => {
             /> */}
           </div>
           <div className="min-w-3 border py-3 pl-2 mr-auto pr-6 md:pr-24">
-            <p className="font-semibold font-montserrat text-base">Доступные опции:</p>
+            <p className="font-semibold font-montserrat text-base">
+              Доступные опции:
+            </p>
           </div>
-          <p className="text-base font-montserrat border-b font-medium"
-          dangerouslySetInnerHTML={{
-            __html: eco?.title,
-          }}
-          />
-           <p className="text-base font-montserrat font-medium"
-          dangerouslySetInnerHTML={{
-            __html: eco?.description,
-          }}
-          />
+          <p
+            className="text-base font-montserrat border-b font-medium pb-2"
+          >Деактивация системы старта-стоп</p>
+          <p
+            className="text-base font-montserrat font-medium"
+          >Эта функция гарантирует, что ваш автомобиль не будет автоматически выключать двигатель при остановке. Незаменимая опция для гонщиков!</p>
         </div>
       </div>
 
@@ -77,9 +89,7 @@ const RcPlus = ({ id }) => {
         </div>
       </div>
     </div>
-  ) : (
-    <NoContent />
-  );
+  ) 
 };
 
 export default RcPlus;

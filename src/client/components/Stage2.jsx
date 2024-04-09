@@ -8,13 +8,22 @@ import Help from "./Help";
 const Stage2 = ({ id }) => {
   const [eco, setEco] = useState([]);
   const [isHelp, setIsHelp] = useState(false);
-
   const [isModal, setIsModal] = useState(false);
+  const getEco = async (a) => {
+    try {
+      const { data } = await instance.get(`/parsing-cars-tunings/${a}`);
+      setEco(data?.tuning_statistic_id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getData = async () => {
     try {
-      const { data } = await instance.get(`/stage2/engine/${id}/`);
-      setEco(data[0]);
-      console.log(data);
+      const { data } = await instance.get(`/parsing-cars-engines/${id}/`);
+      let arr = data?.tuning_id?.filter((c) => c.name == "Stage 2");
+      console.log(data)
+      getEco(arr[0]?.id);
     } catch (error) {
       console.log(error);
     }
@@ -24,14 +33,16 @@ const Stage2 = ({ id }) => {
     getData();
   }, [id]);
 
-  return eco?.original_hp ? (
+  console.log(id)
+
+  return eco ? (
     <div className="flex flex-col w-full gap-y-12 md:gap-y-40">
       <div className="w-full flex gap-y-12 md:flex-row flex-col justify-between md:gap-x-6">
         <div className="md:w-[60%] flex flex-col gap-y-4">
           {/* section 1 */}
           <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 h-[40.39px]">
             <div className="h-full">
-            <p
+              <p
                 role="button"
                 onClick={() => setIsHelp(true)}
                 className="cursor-pointer text-[13px] md:text-base leading-[17px] font-normal font-montserrat text-[#56B2E7]"
@@ -65,17 +76,20 @@ const Stage2 = ({ id }) => {
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat hover:text-white text-[#1D1D1D]">
-                {eco?.original_hp} hp
+                {eco[0]?.original}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
-                {eco?.after_hp} hp
+                {eco[0]?.after_tuning}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-semibold font-montserrat hover:text-white text-[#56B2E7]">
-                + {eco?.after_hp - eco?.original_hp} hp
+                +{" "}
+                {parseInt(eco[0]?.after_tuning.match(/\d+/)[0]) -
+                  parseInt(eco[0]?.original.match(/\d+/)[0])}
+                {} hp
               </p>
             </div>
           </div>
@@ -88,30 +102,30 @@ const Stage2 = ({ id }) => {
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat hover:text-white text-[#1D1D1D]">
-                {eco?.original_nm} Nm
+                {eco[1]?.original}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
-                {eco?.after_nm} Nm
+                {eco[1]?.after_tuning}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-semibold font-montserrat hover:text-white text-[#56B2E7]">
-                + {eco?.after_nm - eco?.original_nm} Nm
+                +{" "}
+                {parseInt(eco[1]?.after_tuning.match(/\d+/)[0]) -
+                  parseInt(eco[1]?.original.match(/\d+/)[0])}{" "}
+                Nm
               </p>
             </div>
           </div>
           {/* section 5 */}
-          <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 min-h-[40.39px]">
+          <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 mon-h-[40.39px]">
             <div className="col-span-4 border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 flex items-end py-2 justify-center flex-col">
               <p className="text-[13px] text-center sm:text-center md:text-[16px] leading-[22.4px] px-1 md:px-4 font-montserrat hover:text-white text-[#0099CC]">
-                {eco?.exception}
+                Индивидуальные перепрошивки несовместимы с топливом E85
               </p>
-              
             </div>
-
-           
           </div>
           {/* section 4 */}
           <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 h-[40.39px]">
@@ -126,7 +140,7 @@ const Stage2 = ({ id }) => {
 
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
-                {eco?.price} ₽
+                Этап 2
               </p>
             </div>
           </div>
@@ -142,7 +156,7 @@ const Stage2 = ({ id }) => {
           </div>
         )}
       </div>
-      {isHelp && <Help setState={setIsHelp}/>}
+      {isHelp && <Help setState={setIsHelp} />}
       {isModal && <FeedbackModal setIsModal={setIsModal} />}
 
       <div className="w-full min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl px-[38px] gap-x-[36px]">

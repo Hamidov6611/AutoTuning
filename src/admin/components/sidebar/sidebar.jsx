@@ -93,7 +93,7 @@ function Sidebar() {
               </NavLink>
             </li>
             {/* catalog */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-catalogs"}
                 className={({ isActive }) =>
@@ -104,9 +104,9 @@ function Sidebar() {
               >
                 <span className="ml-3">Каталог</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* brand */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-brand"}
                 className={({ isActive }) =>
@@ -117,7 +117,7 @@ function Sidebar() {
               >
                 <span className="ml-3">Бренд</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* Category */}
             <li>
               <NavLink
@@ -207,7 +207,7 @@ function Sidebar() {
             </li>
 
             {/* Модель бренда */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-brand-model"}
                 className={({ isActive }) =>
@@ -218,9 +218,9 @@ function Sidebar() {
               >
                 <span className="ml-3">Модель бренда</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* Год бренда */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-brand-year"}
                 className={({ isActive }) =>
@@ -231,9 +231,9 @@ function Sidebar() {
               >
                 <span className="ml-3">Год бренда</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* Брендовый двигатель */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-brand-engine"}
                 className={({ isActive }) =>
@@ -244,10 +244,10 @@ function Sidebar() {
               >
                 <span className="ml-3">Бренд. двигатель</span>
               </NavLink>
-            </li>
+            </li> */}
 
             {/* ECO */}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-eco"}
                 className={({ isActive }) =>
@@ -258,10 +258,10 @@ function Sidebar() {
               >
                 <span className="ml-3">ECO</span>
               </NavLink>
-            </li>
+            </li> */}
 
             {/* Этап 1*/}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-stage"}
                 className={({ isActive }) =>
@@ -272,10 +272,10 @@ function Sidebar() {
               >
                 <span className="ml-3">Этап 1</span>
               </NavLink>
-            </li>
+            </li> */}
 
             {/* Этап 2*/}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-stage2"}
                 className={({ isActive }) =>
@@ -286,10 +286,10 @@ function Sidebar() {
               >
                 <span className="ml-3">Этап 2</span>
               </NavLink>
-            </li>
+            </li> */}
 
             {/* Коробка передач*/}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-transmission"}
                 className={({ isActive }) =>
@@ -300,10 +300,10 @@ function Sidebar() {
               >
                 <span className="ml-3">Коробка передач</span>
               </NavLink>
-            </li>
+            </li> */}
 
             {/* RC +*/}
-            <li>
+            {/* <li>
               <NavLink
                 to={"/admin-rc-plus"}
                 className={({ isActive }) =>
@@ -314,7 +314,7 @@ function Sidebar() {
               >
                 <span className="ml-3">RC +</span>
               </NavLink>
-            </li>
+            </li> */}
           </ul>
           <button
             onClick={toggleSidebar}

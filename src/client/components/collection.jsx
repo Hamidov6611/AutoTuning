@@ -1,27 +1,29 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { BASE_URL, instance } from "../../api/axios";
 import { Link } from "react-router-dom";
-import { useGetBrandModelsQuery } from "../../redux/api";
+import { parsing_cars } from "../../helpers/parsing_cars";
+import { fin } from "../../helpers/fin";
 
 const Collection = () => {
-  const [catalog, setCatalog] = useState([]);
+  const [catalog, setCatalog] = useState(fin);
   const [id, setId] = useState(1);
-  const { data = [], isLoading } = useGetBrandModelsQuery(id);
-  const getCatalog = useCallback(async () => {
-    try {
-      const { data } = await instance.get(`/catalog/?page=1&limit=10`);
-      setCatalog(data?.data);
-      toggleCard(data?.data[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const [data, setData] = useState([]);
+  // const getCatalog = useCallback(async () => {
+  //   try {
+  //     const { data } = await instance.get(`/catalog/?page=1&limit=10`);
+  //     setCatalog(data?.data);
+  //     toggleCard(data?.data[0]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    getCatalog();
-  }, [getCatalog]);
+  // useEffect(() => {
+  //   getCatalog();
+  // }, [getCatalog]);
 
   const toggleCard = (item) => {
+    changeType(item?.type)
     setId(item?.id);
     setCatalog((prevCards) =>
       prevCards?.map((card) =>
@@ -31,6 +33,17 @@ const Collection = () => {
       )
     );
   };
+
+  const changeType = (a) => {
+    const filteredCars = parsing_cars.filter(car => car.type === a);
+    setData(prevData => [...filteredCars]);
+  };
+
+  useEffect(() => {
+    changeType("car");
+  }, []);
+  console.log(data)
+
   return (
     <div className="max-w-[1440px] space-y-6 mx-auto my-5 ol:my-10 px-[3%] tl:px-0">
       <div className="w-[98%] st:w-[1280px] mx-auto flex flex-col gap-y-[20px] tl:gap-y-[80px] overflow-x-auto">
@@ -44,7 +57,7 @@ const Collection = () => {
               >
                 <img
                   onClick={() => toggleCard(c)}
-                  src={BASE_URL + c?.img}
+                  src={c?.img}
                   alt="c"
                   key={idx}
                   className={`w-[113px] sm:w-auto  ${
@@ -59,20 +72,20 @@ const Collection = () => {
       {/* section 2 */}
       <div className="sm:max-w-[1223px] mx-auto">
         <div className="grid grid-cols-3 sm:grid-cols-8  nor:grid-cols-12 gap-y-6 overflow-x-auto ol:overflow-x-hidden gap-x-3  mx-auto items-center max-w-[1223px]">
-          {data?.brand?.map((c, idx) => (
+          {data?.map((c, idx) => (
             <Link
-              to={`/${c?.title}/${c?.id}`}
+              to={`/${c?.name}/${c?.id}`}
               onClick={() => window.scrollTo({ top: 0 })}
-              className={`shadow-example cursor-pointer bg-[#DADADA] flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
+              className={`shadow-example cursor-pointer ${(c?.name == "SsangYong" || c?.name== "Wiesmann") ? "bg-white" : "bg-[#DADADA]"}  flex-col border py-5  gap-y-2 rounded-[8px]  w-full h-[100px] flex items-center justify-center`}
             >
               <img
-                src={BASE_URL + c?.img}
-                alt={c}
+                src={BASE_URL + c?.url}
+                alt={c?.name}
                 key={idx}
                 className="px-2 h-[92%] w-auto object-scale-down"
               />
               <p className="m-0 p-0 text-[10px] text-center h-[8%]">
-                {c?.title}
+                {c?.name}
               </p>
             </Link>
           ))}

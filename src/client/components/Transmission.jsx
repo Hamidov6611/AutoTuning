@@ -8,19 +8,19 @@ import Paragraph from "./ui/tag/paragraph";
 const Transmission = ({ id }) => {
   const [eco, setEco] = useState([]);
   const [isModal, setIsModal] = useState(false);
-  const getData = async () => {
-    try {
-      const { data } = await instance.get(`/transmission/engine/${id}/`);
-      setEco(data[0]);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getData = async () => {
+  //   try {
+  //     const { data } = await instance.get(`/transmission/engine/${id}/`);
+  //     setEco(data[0]);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, [id]);
+  // useEffect(() => {
+  //   getData();
+  // }, [id]);
 
   return eco?.price ? (
     <div className="flex flex-col w-full gap-y-12 md:gap-y-40">

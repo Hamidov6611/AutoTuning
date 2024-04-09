@@ -6,14 +6,33 @@ import NoContent from "./ui/no-content";
 import Help from "./Help";
 
 const Eco = ({ id }) => {
-  const [eco, setEco] = useState([]);
+  const [eco, setEco] = useState(null);
   const [isModal, setIsModal] = useState(false);
   const [isHelp, setIsHelp] = useState(false);
+
+  const getEco = async (id) => {
+    try {
+      const { data } = await instance.get(`/parsing-cars-tunings/${id}`);
+      setEco(data?.tuning_statistic_id[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function calculateEfficiencyGain(originalNm, afterTuningNm) {
+    // Momentning oshish foizini hisoblaymiz
+    let torqueIncreasePercentage =
+      ((afterTuningNm - originalNm) / originalNm) * 100;
+
+    return torqueIncreasePercentage.toFixed(2);
+  }
+
   const getData = async () => {
     try {
-      const { data } = await instance.get(`/eco/engine/${id}/`);
-      setEco(data[0]);
-      console.log(data);
+      const { data } = await instance.get(`/parsing-cars-engines/${id}/`);
+      let arr = data?.tuning_id?.filter((c) => c.name == "ECO");
+
+      getEco(arr[0]?.id);
     } catch (error) {
       console.log(error);
     }
@@ -23,14 +42,20 @@ const Eco = ({ id }) => {
     getData();
   }, [id]);
 
-  return eco?.price ? (
+  console.log(eco);
+
+  return eco?.original ? (
     <div className="flex flex-col w-full gap-y-12 md:gap-y-40">
       <div className="w-full flex gap-y-12 md:flex-row flex-col justify-between md:gap-x-6">
         <div className="md:w-[60%] flex flex-col gap-y-4">
           {/* section 1 */}
           <div className="w-full grid grid-cols-4 gap-x-1 md:gap-x-3 h-[40.39px]">
             <div className="h-full">
-              <p role="button" onClick={() => setIsHelp(true)} className="cursor-pointer text-[13px] md:text-base leading-[17px] font-normal font-montserrat text-[#56B2E7]">
+              <p
+                role="button"
+                onClick={() => setIsHelp(true)}
+                className="cursor-pointer text-[13px] md:text-base leading-[17px] font-normal font-montserrat text-[#56B2E7]"
+              >
                 Больше <br />
                 информации
               </p>
@@ -60,17 +85,20 @@ const Eco = ({ id }) => {
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat hover:text-white text-[#1D1D1D]">
-                {eco?.original_nm} Nm
+                {eco?.original}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
-                {eco?.after_nm} Nm
+                {eco?.after_tuning}
               </p>
             </div>
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-semibold font-montserrat hover:text-white text-[#56B2E7]">
-                + {eco?.after_nm - eco?.original_nm} Nm
+                +{" "}
+                {parseInt(eco.after_tuning.match(/\d+/)[0]) -
+                  parseInt(eco.original.match(/\d+/)[0])}{" "}
+                Nm
               </p>
             </div>
           </div>
@@ -84,7 +112,12 @@ const Eco = ({ id }) => {
 
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
               <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat hover:text-white text-[#1C1C1C]">
-                +/- {eco?.percentage} %
+                +/-{" "}
+                {calculateEfficiencyGain(
+                  parseInt(eco.original.match(/\d+/)[0]),
+                  parseInt(eco.after_tuning.match(/\d+/)[0])
+                )}{" "}
+                %
               </p>
             </div>
           </div>
@@ -100,9 +133,10 @@ const Eco = ({ id }) => {
             </div>
 
             <div className="border h-full border-[#1D1D1D] cursor-pointer transition-all duration-300 ease-in hover:bg-mainRed hover:text-white text-[#1D1D1D] bg-white px-1 md:px-4 flex items-center justify-end">
-              <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
+              {/* <p className="text-[13px] text-center sm:text-end md:text-[16px] leading-[22.4px] font-montserrat font-semibold hover:text-white text-[#56B2E7]">
                 {eco?.price} ₽
-              </p>
+              </p> */}
+              <img src="/images/eco.svg" alt="" />
             </div>
           </div>
         </div>
@@ -117,7 +151,7 @@ const Eco = ({ id }) => {
           </div>
         )}
       </div>
-      {isHelp && <Help setState={setIsHelp}/>}
+      {isHelp && <Help setState={setIsHelp} />}
       {isModal && <FeedbackModal setIsModal={setIsModal} />}
 
       <div className="w-full min-h-[313px] flex items-center lg:flex-row flex-col gap-y-4 justify-center border border-[#FF0000] shadow-xl px-[38px] gap-x-[36px]">
