@@ -20,7 +20,7 @@ const Contact = () => {
           <div className="lg:w-1/3 h-full">
             <Title>Контакты</Title>
 
-            <div className="mt-[56px] flex flex-col gap-y-[20px] ">
+            <div className="mt-[30px] sm:mt-[56px] flex flex-col gap-y-[20px] ">
               <Link
                 to={"tel:+79268103277"}
                 className="flex gap-x-[11px] items-center"
@@ -56,7 +56,7 @@ const Contact = () => {
                   />
                 </svg>
                 <p className="font-montserrat text-[20px] font-normal text-mainBlack">
-                  E-mail
+                  X-tuners@yandex.ru
                 </p>
               </div>
             </div>
@@ -66,16 +66,16 @@ const Contact = () => {
                 Режим работы:
               </p>
               <p className="font-montserrat text-[18px] font-normal text-mainBlack">
-                С 11 до 21 без выходных
+                С 11:00 до 21:00 без выходных
               </p>
             </div>
 
-            <div className="mt-[30px] flex flex-col gap-y-[10px]">
+            <div className="mt-[30px] flex gap-x-2 mb-4 flex flex-col items-center gap-y-[10px]">
               <p className="font-montserrat text-[20px] font-medium text-mainBlack">
                 Адрес:
               </p>
               <p className="font-montserrat text-[18px] font-normal text-mainBlack">
-                Москва
+                Киевская ул., 14, стр1 (этаж 3)
               </p>
             </div>
           </div>

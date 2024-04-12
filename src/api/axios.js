@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "http://185.225.34.216:3001/api",
+  baseURL: process.env.baseURL,
 });
-// export const BASE_URL = `http://localhost:3001/`;
-export const BASE_URL = `http://185.225.34.216:3001/`;
-export const BASE_LINK = `http://www.k222la6a.beget.tech/`
+export const BASE_URL = process.env.BASE_URL
+export const BASE_LINK = process.env.BASE_LINK

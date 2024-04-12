@@ -177,7 +177,7 @@ const Footer = () => {
                 Номер телефона
               </p>
             </Link>
-            <div className="flex items-center gap-x-[20px]">
+            <Link to={`mailto:X-tuners@yandex.ru`} className="flex items-center gap-x-[20px]">
               <div className="flex items-center justify-center z-[1]  rounded-full">
                 <svg
                   width="20"
@@ -192,10 +192,10 @@ const Footer = () => {
                   />
                 </svg>
               </div>
-              <p className="text-sm font-montserrat font-normal md:text-base text-black">
+              <Link to={`mailto:X-tuners@yandex.ru`} className="text-sm font-montserrat font-normal md:text-base text-black">
                 Почта
-              </p>
-            </div>
+              </Link>
+            </Link>
             <div className="flex items-center gap-x-[30px] sm:gap-x-[40px]">
               <div className="h-[38px] w-[38px] rounded-full border border-[#D9D9D9] flex items-center justify-center">
                 <svg

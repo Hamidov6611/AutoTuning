@@ -4,8 +4,13 @@ import GamburgerMenu from "./ui/menu/GamburgerMenu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Close } from "@mui/icons-material";
 import "./ui/menu/menu.css";
+import { useGetCategoryQuery } from "../../redux/api";
 
 const Sidebar = ({ isMenu, setIsMenu }) => {
+  const { data: category = [], isLoading } = useGetCategoryQuery();
+  const topFunction = () => {
+    window.scrollTo({ top: 0 });
+  };
   const navigate = useNavigate();
   const [isHover, setIsHover] = useState({
     menu1: false,
@@ -241,19 +246,19 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
             </div>
             {isHover.menu3 && (
               <div className=" z-[1] bg-[#0B0B0B] border border-[#591B1B] p-3 gap-y-[15px] flex flex-col w-full">
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Выхлопные системы
-                  {/* <br />(даунпайпы и спорт выхлопы) */}
-                </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Винил
-                </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Спортивные диски
-                </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
-                  Тормозные системы
-                </div>
+                {category?.data?.map((c, idx) => (
+                  <Link
+                    to={`/service?id=${c?.id}`}
+                    onClick={() => {
+                      topFunction();
+                      setIsMenu(false);
+                    }}
+                    key={idx}
+                    className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal"
+                  >
+                    {c?.title}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -319,7 +324,7 @@ const Sidebar = ({ isMenu, setIsMenu }) => {
                 >
                   Новости
                 </div>
-                <div className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
+                <div onClick={() => sendNext("/articles", true)} className="text-white hover:text-[#FF0000] transition-all duration-150 text-base font-montserrat font-normal">
                   Статьи
                 </div>
               </div>

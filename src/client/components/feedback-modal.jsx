@@ -85,7 +85,7 @@ const FeedbackModal = ({ setIsModal }) => {
               required
             />
             <input
-              type="text"
+              type="number"
               value={postData.phone}
               onChange={(e) =>
                 setPostData({ ...postData, phone: e.target.value })
